@@ -8,7 +8,12 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.32.0 (2026-10-26).*
+*Covers Video Dancer v0.33.0 (2026-10-26).*
+
+## New in 0.33.0
+
+- Bin and Library tabs: one row of tabs with a count on each replaces the folding sections. Click a tab to open it, Ctrl-click to add or drop one, Shift-click to open every tab between.
+- Open tabs share one scroll, each under its own heading with its + button. Drag a tab to move it. Each panel remembers the tabs you left open.
 
 ## New in 0.32.0
 
@@ -389,6 +394,10 @@ the Co-Director panel header; the **Tether** is a small floating window (Shift+D
   = no render yet; ⑂ = a clip born from a video edit. Also holds **char sheets**. Right-click
   for rename / duplicate / export as / send to project / disable / delete. Alt-drag a clip tile to the
   desktop to copy its video out.
+- **Tabs**: the Library and Bin each have one row of tabs over the grid, each tab with its
+  count (an empty one is dim). Click = that tab only, ctrl-click adds or drops one, shift-click
+  opens every tab between. Open tabs share one scroll, each under its heading (the Bin's with
+  its + button). Drag a tab to move it. Each panel remembers its open tabs.
 - **Folders**: a row of chips over the grid in the Library and Bin. Click a chip for that folder
   (its subfolders open as a row under it), ctrl-click adds another, click a lit chip to back
   out; nothing lit = everything not in a folder. Drag cards onto chips, drag a chip onto a chip
@@ -719,7 +728,7 @@ filmstrip frames filling the blocks edge to edge.
 ### PREVIS
 
 - Block a shot in grey 3D before you spend a gen: stand-in actors, real cameras, keys on one clock, shots and multicam cuts. The gen paints the look.
-- The Bin has a **PREVIS** section: make a new previs there. Drag the whole previs onto the timeline as one block, or drag a single shot out.
+- The Bin has a **PREVIS** tab: make a new previs there. Drag the whole previs onto the timeline as one block, or drag a single shot out.
 - Double-click a previs block: the studio opens at that moment. The Timeline Monitor plays the block live from its scene; an empty clip shows its previs underneath, in the Monitor and in export.
 - A Clip Gen over a previs offers that slice as its video ref: **previs available** adds it in one click, or the VID row’s **＋ previs** box picks any previs. The previs sets the clip’s length and shape.
 - The studio: one tool row over the views (move, turn, scale, frame, the snaps, clay), views on the left with the shot camera inset, a side bar listing elements, cameras and shots, the inspector with a keyframe list, and the strip on the timeline’s grammar (a track per camera and keyed element). Panes split, join, swap and resize, any pane shows any view, and your own layouts save (one can be the default).

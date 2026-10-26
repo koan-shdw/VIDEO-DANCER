@@ -54,6 +54,7 @@ documentation. Everything below is in it, from install to export.
 
 Every project gets its own image and music library. @-mention an image and it flows into your prompt and the upload queue at the same time.
 
+- **Tabs**: one row of tabs over the grid, one per file type, each with its count. Click a tab to open it, Ctrl-click to add or drop one, Shift-click to open every tab between. Open tabs share one scroll, each under its own heading. Drag a tab to move it. The panel remembers the tabs you left open.
 - **Import images**: use the file picker or drop files straight from your desktop (jpeg, png, webp, gif, bmp, avif).
 - **Paste, drag in, double-click**: Ctrl+V pastes a screen grab, images drag in straight from a browser, and double-clicking empty space opens the import window.
 - **Import music**: same two ways (mp3, wav, m4a, aac, ogg, flac).
@@ -80,12 +81,13 @@ Every project gets its own image and music library. @-mention an image and it fl
 
 Your clips and timelines, laid out as tiles. Drag a clip onto a timeline, double-click to edit, right-click for everything else.
 
+- **Tabs**: one row of tabs over the grid (timelines, clips, sheets, previs and the rest), each with its count. Click a tab to open it, Ctrl-click to add or drop one, Shift-click to open every tab between. Open tabs share one scroll, each under its own heading with its own + button. Drag a tab to move it. The panel remembers the tabs you left open.
 - **New clip**: creates an empty storyboard clip.
 - **Clip tiles**: each shows a thumbnail of its first reference, a name, and a take count. A dashed outline means it has no render yet. Edit clips (vid2vid) carry a ⑂ mark.
 - **Drag to timeline**: drag a clip tile onto a timeline track to add it.
 - **Open or select**: click to select a clip, double-click to open it in Clip Gen (edit clips open in the Video Editor).
 - **Right-click a clip**: rename, duplicate, export as, disable, or delete. Delete tells you how many timeline instances it has, and it's undoable.
-- **Multiple items**: Ctrl/Shift-select, then right-click a selected tile to act on the selection, including picks in other Bin or Library sections. One Undo restores a bulk deletion.
+- **Multiple items**: Ctrl/Shift-select, then right-click a selected tile to act on the selection, including picks in other Bin or Library tabs. One Undo restores a bulk deletion.
 - **Export one clip**: right-click → **export as…** saves the keeper take in the format you pick. Or just **alt-drag** the tile onto your desktop or any folder. The file copies out, the original stays in the project.
 - **Thumbnail zoom**: the header slider or ctrl+scroll resizes the tiles, same as the Library.
 - **Clip details**: a footer shows the selected clip's name, model, duration, take state, seed, and reference titles.
@@ -154,7 +156,7 @@ Grab any frame straight to your Library. This is how you continue a shot: feed o
 ## PREVIS
 
 - Block a shot in grey 3D before you spend a gen: stand-in actors, real cameras, keys on one clock, shots and multicam cuts. The gen paints the look.
-- The Bin has a **PREVIS** section: make a new previs there. Drag the whole previs onto the timeline as one block, or drag a single shot out.
+- The Bin has a **PREVIS** tab: make a new previs there. Drag the whole previs onto the timeline as one block, or drag a single shot out.
 - Double-click a previs block: the studio opens at that moment. The Timeline Monitor plays the block live from its scene; an empty clip shows its previs underneath, in the Monitor and in export.
 - A Clip Gen over a previs offers that slice as its video ref: **previs available** adds it in one click, or the VID row’s **＋ previs** box picks any previs. The previs sets the clip’s length and shape.
 - The studio: one tool row over the views (move, turn, scale, frame, the snaps, clay), views on the left with the shot camera inset, a side bar listing elements, cameras and shots, the inspector with a keyframe list, and the strip on the timeline’s grammar (a track per camera and keyed element). Panes split, join, swap and resize, any pane shows any view, and your own layouts save (one can be the default).
