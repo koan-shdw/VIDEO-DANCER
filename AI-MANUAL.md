@@ -8,7 +8,23 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.31.0 (2026-10-22).*
+*Covers Video Dancer v0.32.0 (2026-10-26).*
+
+## New in 0.32.0
+
+- Codi, rebuilt: eight new guides written from scratch. It pitches ideas, directs camera and action, builds previs, catches misreads before you pay, and learns from your corrections.
+- Codi’s replies read properly: bold, lists, tables, headings and code boxes with a copy button, in the panel, the Room and the tether. Its tool log groups each tool with a count, refusals in red.
+- Seedance renders send the prompt in Chinese. Clip Gen’s generated box has EN and 中 tabs to see what goes out, and a switch to turn it off.
+- Cold read: before a render Codi reads the prompt fresh and flags what the model could get wrong. Its switch sits beside the renders switch.
+- Codi switches moods on and off, keeps a log of your corrections and reviews it with you when you ask. A run that runs out of time keeps its work.
+- Previs cards: a posed still for each camera, on pages of up to six, sent as storyboard pages. Clip Gen’s CARDS row keeps every version and sends the newest.
+- Stand-ins from a character sheet, figures in colour, and a panel key that tells the model who is who.
+- The PREVIS studio, finished: one tool row, a strip on the timeline’s grammar, a side bar for elements, cameras and shots, an inspector with a keyframe list, and Tab to search in a view.
+- Export a previs as an animatic, storyboard sheets or a shot list. Coverage adds a master, two singles and two overs on two subjects in one go.
+- Names in a view: every one, or only the selected. A switch on the names row of the overlay list.
+- Camera only: a roof you can work under. A wireframe in the work views, solid on camera, in the bake and on the cards.
+- ◧ compare in Clip Gen: drag a line across a take to set the previs it was sent against the render.
+- Codi lays a previs on the PREVIS track under its clip, and clips made after a previs show by name and length on the timeline again.
 
 ## New in 0.31.0
 
@@ -595,6 +611,10 @@ engine, real duration, date. The **S-B** card (live storyboard) is always first.
 - **Drag a card onto any field** to restore that field from the take's frozen recipe; drag it to
   the Bin to clone a whole new clip from the recipe; drag it to the timeline to place it.
 - Renders are immutable. Nothing ever edits a take's file or its frozen snapshot.
+- **◧ compare**: on a take that was sent a previs video, the take player's **◧ compare** lays that
+  previs over the picture up to a line. Drag on the picture to move it, ← → to nudge it (Shift:
+  10 %); both play on the take's clock. While it is on, the take drags to the timeline from its
+  T-chip.
 
 ## 8. Clip Monitor (source monitor)
 
@@ -702,10 +722,14 @@ filmstrip frames filling the blocks edge to edge.
 - The Bin has a **PREVIS** section: make a new previs there. Drag the whole previs onto the timeline as one block, or drag a single shot out.
 - Double-click a previs block: the studio opens at that moment. The Timeline Monitor plays the block live from its scene; an empty clip shows its previs underneath, in the Monitor and in export.
 - A Clip Gen over a previs offers that slice as its video ref: **previs available** adds it in one click, or the VID row’s **＋ previs** box picks any previs. The previs sets the clip’s length and shape.
-- The studio: views on the left with the shot camera inset, the outliner over the inspector, the strip with the playhead, shots and keys. Panes split, join, swap and resize, any pane shows any view, and your own layouts save (one can be the default).
+- The studio: one tool row over the views (move, turn, scale, frame, the snaps, clay), views on the left with the shot camera inset, a side bar listing elements, cameras and shots, the inspector with a keyframe list, and the strip on the timeline’s grammar (a track per camera and keyed element). Panes split, join, swap and resize, any pane shows any view, and your own layouts save (one can be the default).
+- Working in a view: **Tab** searches and adds at the pointer, a drag on empty space box-selects, right-click opens menus. Each view’s overlay list picks what it shows: every camera’s path, and **names: every one | the selected**.
+- **Camera only**: an element’s inspector opens with **where it shows: everywhere | camera only**. Camera only is a wireframe in the work views that clicks pass through (a roof you work under), and solid on camera, in the bake and on the cards. Its side bar row carries a box mark.
 - Keys: set them on the strip and move, copy or delete them there. Drag a path’s points and an actor’s body in the perspective view. Press **?** for the shortcuts card.
-- Shots keep the take grammar (flag, colour, disable); the padlock stops every way of moving the shot camera.
-- The Co-Director reads and edits a previs scene with you. Send to project carries a previs; export and gens wait for shots still baking.
+- Shots keep the take grammar (flag, colour, disable); the padlock stops every way of moving the shot camera. **Coverage** adds a master, two singles and two overs on two selected subjects in one go.
+- **Export** from the strip: the animatic, storyboard sheets (PDF) or the shot list (CSV).
+- **Cards**: a posed still for each camera run, on pages of up to six, sent as storyboard pages instead of the grey video. Clip Gen’s **CARDS** row keeps every version and sends the newest. Stand-ins dress from a character sheet, figures take colours, and a panel key in the prompt says who is who.
+- The Co-Director reads and edits a previs scene with you, builds one from your words, draws its cards and lays it on the PREVIS track under its clip. Send to project carries a previs; export and gens wait for shots still baking.
 
 ## 10. Co-Director and the Director's Room
 
@@ -756,19 +780,27 @@ tinted until accepted as keep-or-revert cards. Every write is undoable.
   written. Hover for the split (fresh against cached) and what the prompt was made of: guides,
   project state, history, message, images. The exact prompt of the last exchange is written to
   `codir-last-prompt.txt` in the app data folder, so you can read what it read.
-- **Editable guides**: the prompting bibles it follows are per-user markdown files with load
-  toggles: fork them, tune them, feed it your own rules. It saves a new rule only when
-  explicitly told to remember; those rules live in their own file (`guides/learned.md`), never
-  a fork of the instructions, so every app update reaches them. A **Director rigs** guide ships with it: the five camera laws,
-  every camera / action / VFX move with a plain line of what it looks like, so "make it feel
-  like the Matrix hallway" reaches for the right names.
+- **Its guides**: eight markdown files with load toggles (Settings → Co-Director): who it is and
+  how it works, operations (the procedure and reply shapes), library (prompting knowledge per
+  engine), gaffer (camera, action and effects), previs, ideas (the idea engine for loose ideas),
+  fail (the misreads it checks before you pay) and learning. Fork them, tune them, feed it your
+  own rules. It saves a new rule only when told to save; those rules live in their own file
+  (`guides/learned.md`), never a fork of the instructions, so every app update reaches them.
+- **It learns from corrections**: every correction goes in a dated log; ask for a review and it
+  proposes which ones become standing rules.
+- **Cold read**: with **cold read on** beside the renders switch, it reads the compiled prompt
+  fresh before a render and flags what the model could get wrong.
+- **Readable replies**: bold, lists, tables, headings and code boxes with a copy button, in the
+  panel, the Room and the tether. The tool log groups each tool with a count; refusals show in
+  red; its test stills sit under the check that made them.
 - **MOODS**: style briefs it puts on. The **⌃ MOODS** fold above the prompt box (panel and
   Room) lists the installed ones as chips: click = on for this session, right-click → pin =
   this project, `#name` in a message = that message only. Two ship:
   **HARDCORE ANIME** and **80S DARK FANTASY**. **+ new** has the Co-Director interview you and
   write one; **⇪ add** takes any `.vmd`, a skill `.md`, or a two-file skill zip (they convert);
   **⇩ share** saves one as a `.vmd` file for anyone. Typing a mood's trigger word with it off
-  shows a "matches, turn on?" chip; it never switches one on by itself. A `.vmd` is plain
+  shows a "matches, turn on?" chip. It sees every installed mood and can switch one on or off
+  when the work calls for it. A `.vmd` is plain
   markdown with a small header (name, triggers, not-for, author) and two halves: how to
   write, what to know. Settings → General has "your name on MOODS" for the credit.
   **⇣ community** lists the shared MOODS with their makers; one click installs one. Right-click
@@ -842,6 +874,9 @@ a running job is already billing, so cancelling is best-effort.
   down by hand.
 - **SAVES FAILING banner**: a failing disk save is impossible to miss and clears when a save
   lands. Projects living in cloud-synced folders get a one-time notice.
+- **Chinese for Seedance**: a Seedance render sends its prompt in Chinese, translated through the
+  Co-Director's route; the English stays the recipe and the take keeps what was sent. Clip Gen's
+  generated box has **EN | 中** tabs to see what goes out, and **中 chinese on/off** to send English.
 - **Costs**: fal engines show a live dollar estimate before rendering; ModelArk bills tokens,
   so no dollar estimate shows there. Video edits run roughly $0.14/sec all-in. The SPND chip
   tracks per-project spend.
