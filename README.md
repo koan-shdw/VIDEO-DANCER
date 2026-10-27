@@ -170,6 +170,16 @@ Grab any frame straight to your Library. This is how you continue a shot: feed o
 
 ---
 
+## Subtitles
+
+- The Bin has a **SUBTITLES** tab: make a subtitle there, rename it, copy it, put it in folders.
+- The **SUB** track sits above the video rows. Drop a subtitle on a clip and it covers that clip (no clip: 10 s); it overwrites what it lands on. Drag to move, pull the edges to trim, click to select (Del removes). Its 👁 hides the subtitles on the Monitor, its padlock locks the row.
+- Double-click a SUB block or the Bin tile: the **Subtitle** panel opens. Two languages, a style card for each (font, size, colour, opacity, outline, weight; link 1 + 2 to change both), top or bottom with its height, the second language above or below, and every line with its start and end. The Timeline Monitor shows the subtitles live.
+- **listen**: pick a model (ElevenLabs Scribe, $0.22 an hour; Gemini, about $0.10; Whisper large v3 on fal, about $0.04) and press listen. The Queue renders the stretch under each block without the score, the model hears the dialogue, and the lines come back with their times. A block’s hatched stretches have not been heard yet: **listen to the new part** hears only those and keeps every line already there.
+- **make** beside a language: the spoken language gets what was heard; any other language is translated line by line through your Co-Director’s model, times kept.
+
+---
+
 ## Clip Gen (the model interface)
 
 ![Clip Gen](docs/img/clipgen.png)
@@ -634,6 +644,7 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 - **Export to MP4**: a full ffmpeg re-encode to a Save dialog (defaulting to an exports folder), one at a time, with live progress.
 - **What you see is what renders**: the multi-track composite exports exactly as the monitor plays it: topmost track wins, gaps render black, per-block **speed** is baked (video and audio), audio lanes mix with their **keyframes and fades**, blocks under a muted block keep their sound, per-track and per-block mutes hold.
 - **Range export**: an I/O range set on the timeline exports just that window.
+- **Subtitles**: when the SUB track has blocks, the export row **subtitles** picks **burn in** (drawn into the picture as the Monitor shows them), **.srt** (one file per language beside the video, named after it: `film.srt`, `film.ja.srt`) or **off**. Both follow the export range.
 - **Dissolves**: export blends both moving shots over the same transition window as the monitor, with effects retained. Missing source handles repeat edge frames. Audio fades remain separate.
 - **Resolution and fps**: 480, 720, or 1080p (short side, defaulting to 1080) and auto, 24, or 30 fps (defaulting to auto, taken from the first clip).
 - **Storyboard-aware**: un-rendered clips export as their beat reference frames, held for each beat's window, matching what the monitor shows.
@@ -642,6 +653,17 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 - **Quality**: H.264 at CRF 18, yuv420p, AAC 192k, faststart.
 - **Progress and reveal**: a probing, exporting, and percentage readout, then click the result to reveal it in your file browser.
 - **Timeline settings**: rename the timeline and set its aspect (16:9, 9:16, 1:1, 4:3, 3:4, or 21:9), with a clip count and total duration.
+
+---
+
+## New in 0.34.0
+
+- Subtitles: their own tab in the Bin. Make one, rename it, copy it, put it in folders.
+- The SUB track above the video rows: drop a subtitle on a clip and it covers that clip. Drag to move, pull the edges to trim, the lines show inside the block.
+- The Subtitle panel: two languages, a style card for each (font, size, colour, outline), top or bottom, the second above or below, and every line with its times. The Timeline Monitor shows them live.
+- Listen: ElevenLabs Scribe, Gemini or Whisper on fal hears the dialogue under the block and writes the lines with their times. Each model shows its price. Listen to the new part hears only what changed.
+- Make: the spoken language gets what was heard, any other is translated line by line through your Co-Director, times kept.
+- Export: subtitles burn in, as .srt files beside the video named after it, or off.
 
 ---
 

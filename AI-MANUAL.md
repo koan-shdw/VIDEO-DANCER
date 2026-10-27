@@ -8,7 +8,16 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.33.0 (2026-10-26).*
+*Covers Video Dancer v0.34.0 (2026-10-27).*
+
+## New in 0.34.0
+
+- Subtitles: their own tab in the Bin. Make one, rename it, copy it, put it in folders.
+- The SUB track above the video rows: drop a subtitle on a clip and it covers that clip. Drag to move, pull the edges to trim, the lines show inside the block.
+- The Subtitle panel: two languages, a style card for each (font, size, colour, outline), top or bottom, the second above or below, and every line with its times. The Timeline Monitor shows them live.
+- Listen: ElevenLabs Scribe, Gemini or Whisper on fal hears the dialogue under the block and writes the lines with their times. Each model shows its price. Listen to the new part hears only what changed.
+- Make: the spoken language gets what was heard, any other is translated line by line through your Co-Director, times kept.
+- Export: subtitles burn in, as .srt files beside the video named after it, or off.
 
 ## New in 0.33.0
 
@@ -740,6 +749,14 @@ filmstrip frames filling the blocks edge to edge.
 - **Cards**: a posed still for each camera run, on pages of up to six, sent as storyboard pages instead of the grey video. Clip Gen’s **CARDS** row keeps every version and sends the newest. Stand-ins dress from a character sheet, figures take colours, and a panel key in the prompt says who is who.
 - The Co-Director reads and edits a previs scene with you, builds one from your words, draws its cards and lays it on the PREVIS track under its clip. Send to project carries a previs; export and gens wait for shots still baking.
 
+### Subtitles
+
+- The Bin has a **SUBTITLES** tab: make a subtitle there, rename it, copy it, put it in folders.
+- The **SUB** track sits above the video rows. Drop a subtitle on a clip and it covers that clip (no clip: 10 s); it overwrites what it lands on. Drag to move, pull the edges to trim, click to select (Del removes). Its 👁 hides the subtitles on the Monitor, its padlock locks the row.
+- Double-click a SUB block or the Bin tile: the **Subtitle** panel opens. Two languages, a style card for each (font, size, colour, opacity, outline, weight; link 1 + 2 to change both), top or bottom with its height, the second language above or below, and every line with its start and end. The Timeline Monitor shows the subtitles live.
+- **listen**: pick a model (ElevenLabs Scribe, $0.22 an hour; Gemini, about $0.10; Whisper large v3 on fal, about $0.04) and press listen. The Queue renders the stretch under each block without the score, the model hears the dialogue, and the lines come back with their times. A block’s hatched stretches have not been heard yet: **listen to the new part** hears only those and keeps every line already there.
+- **make** beside a language: the spoken language gets what was heard; any other language is translated line by line through your Co-Director’s model, times kept.
+
 ## 10. Co-Director and the Director's Room
 
 The copilot reads the whole project (clips, beats, the actual reference images, char sheets,
@@ -1086,6 +1103,8 @@ faststart. **✕ in the timeline toolbar cancels a running export**; a failed ex
 a truncated file that looks finished. Video dissolves blend both moving shots over the monitor's
 transition window with effects retained. Missing source handles repeat edge frames; audio fades
 remain separate.
+
+**Subtitles**: when the SUB track has blocks, the export row **subtitles** picks **burn in** (drawn into the picture as the Monitor shows them), **.srt** (one file per language beside the video, named after it: `film.srt`, `film.ja.srt`) or **off**. Both follow the export range.
 
 One clip instead of a sequence: right-click it in the Bin → **export video…**, or alt-drag the
 tile onto the desktop or any folder (the file copies out; the original stays in the project).
