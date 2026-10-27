@@ -8,7 +8,16 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.34.0 (2026-10-27).*
+*Covers Video Dancer v0.35.0 (2026-10-27).*
+
+## New in 0.35.0
+
+- Build card on a character plate: the front, side, back and face side by side, with the char sheet printed beside them: name, character, features, voice. One 21:9 picture the model reads.
+- The card becomes the char sheet’s picture. If the char sheet is empty, it opens instead and Codi fills it in from the picture. Press build card again when it is done.
+- Scene plates turn on one spot: east, north, west, south. ▤ build sheet makes the compass plate, each view labelled FACING EAST, NORTH, WEST or SOUTH. Scene plates made before keep their five views.
+- Send the compass plate with previs cards and the prompt names the view behind each card. The studio floor shows N, E, S and W in the work views, with the grid.
+- Previs cards keep each card’s time and camera line. Before a render, the preflight says when the cards and the beats disagree. Redraw an older set to add them.
+- Codi runs PowerShell in your project folder, with a time limit. Every command shows in its tool log; click it to see what came back. Stop ends it.
 
 ## New in 0.34.0
 
@@ -428,6 +437,17 @@ the Co-Director panel header; the **Tether** is a small floating window (Shift+D
   Library folder named after the take (`viking char sheet · T2`), the sheet at the root, tagged
   so every prompt that attaches it reads "take identity from all its panels, copy none of its
   framings". The panel's preview shows takes and built sheets; ⤢ opens them big.
+  A scene plate turns on one spot: east (the picture itself, 3 s), then north, west and south
+  (4 s each). **▤ build sheet** makes the **compass plate**: the four views, each labelled
+  FACING EAST, NORTH, WEST or SOUTH. Scene plates made before 0.35.0 keep their five views and
+  the 2×2. On a character plate, **build card** (top of the panel, or under a take) makes the
+  **character card**: the front, side, back and face side by side, with the char sheet printed
+  in a white column beside them (NAME, CHARACTER, FEATURES, VOICE), one 21:9 picture. It
+  acts on the selected take, else the keeper. The card lands in the Library and becomes the
+  char sheet's picture; a prompt that attaches it reads the printed text as the character's
+  exact description. If the char sheet is empty, it opens instead and Codi fills it in from the
+  picture; press **build card** again when it is done. A field too long to fit is cut with "…"
+  and the toast says so, as it does when a figure runs past its window.
 - **Assembly**: the Co-Director's first cut. **Assembly concept** reads the conversation and
   the storyboard and writes the cut as an outline; correct it in the box under it (Enter
   re-runs), then **lock**. **▶ assemble** watches every take of every shot (keeper plus two),
@@ -747,6 +767,8 @@ filmstrip frames filling the blocks edge to edge.
 - Shots keep the take grammar (flag, colour, disable); the padlock stops every way of moving the shot camera. **Coverage** adds a master, two singles and two overs on two selected subjects in one go.
 - **Export** from the strip: the animatic, storyboard sheets (PDF) or the shot list (CSV).
 - **Cards**: a posed still for each camera run, on pages of up to six, sent as storyboard pages instead of the grey video. Clip Gen’s **CARDS** row keeps every version and sends the newest. Stand-ins dress from a character sheet, figures take colours, and a panel key in the prompt says who is who.
+- Each card keeps its time and its camera line (`CAM FACING SE | 35 mm | 1.6 m eye level`). Before a render, the preflight says when the cards and the beats disagree. Redraw a set drawn before 0.35.0 to add them.
+- North and east: the studio floor shows N, E, S and W in the work views, with the grid. Send a compass plate (§4, Sheet Gen) with the cards and the prompt names the plate view behind each card: NE sits between the north and east views; a camera looking straight up or down has none.
 - The Co-Director reads and edits a previs scene with you, builds one from your words, draws its cards and lays it on the PREVIS track under its clip. Send to project carries a previs; export and gens wait for shots still baking.
 
 ### Subtitles
@@ -843,6 +865,13 @@ tinted until accepted as keep-or-revert cards. Every write is undoable.
 - **It watches video** (with a Google AI key, §2): "how's the latest render of KATA?" makes it
   watch the take and answer from what it saw, quoting motion, cuts and sound. Without the key
   it reads still frames and says so.
+- **Its shell**: it runs PowerShell (pwsh when installed, else Windows PowerShell) in the open
+  project's folder, for work no other tool covers: looking at files and folders, checking what
+  is installed, ffmpeg and ffprobe, downloading media the user gives it a link to. Each command
+  has a time limit: 2 minutes unless it asks for more, 10 at most; a command that runs out is
+  stopped and hands back what it printed. Every command shows in its tool log; click the row to
+  see what came back. **Stop** ends it. Its guide tells it never to delete, never to read keys,
+  logins or the app's settings, and to ask before installing anything.
 
 ### Continuing a plan after jobs finish
 

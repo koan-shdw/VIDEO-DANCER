@@ -166,6 +166,8 @@ Grab any frame straight to your Library. This is how you continue a shot: feed o
 - Shots keep the take grammar (flag, colour, disable); the padlock stops every way of moving the shot camera. **Coverage** adds a master, two singles and two overs on two selected subjects in one go.
 - **Export** from the strip: the animatic, storyboard sheets (PDF) or the shot list (CSV).
 - **Cards**: a posed still for each camera run, on pages of up to six, sent as storyboard pages instead of the grey video. Clip Gen’s **CARDS** row keeps every version and sends the newest. Stand-ins dress from a character sheet, figures take colours, and a panel key in the prompt says who is who.
+- Each card keeps its time and its camera line (`CAM FACING SE | 35 mm | 1.6 m eye level`). Before a render, the preflight says when the cards and the beats disagree. Redraw a set drawn before 0.35.0 to add them.
+- North and east: the studio floor shows N, E, S and W in the work views, with the grid. Send a compass plate (see Sheet Gen) with the cards and the prompt names the plate view behind each card.
 - The Co-Director reads and edits a previs scene with you, builds one from your words, draws its cards and lays it on the PREVIS track under its clip. Send to project carries a previs; export and gens wait for shots still baking.
 
 ---
@@ -365,6 +367,7 @@ requests cancellation of running jobs and keeps completed files.
 - **Many renders, one image gen**: ask for 20 variations of a gen. It lists them, you say go, and they render one after another on that gen, each with its own prompt. Your gen's prompt stays as it was. It also reads the prompt behind every take, your marks on each (every ★, colour, disabled) and looks at the pictures.
 - **Lora examples and ~ tags**: it reads a lora's Civitai examples with their prompts and pictures ("remake the samurai ones"). Press **~** on pictures in Watched or a lora's examples and it sees every tagged one, with its prompt, in each message.
 - **It watches video**: with a Google AI key, "how's the latest render of KATA?" makes it watch the take with Gemini Flash and answer from what it saw. Without the key it reads still frames and says so.
+- **Its shell**: it runs PowerShell in your project folder for work no other tool covers (looking at files, ffmpeg and ffprobe, downloading media you give it a link to), with a time limit: 2 minutes unless it asks for more, 10 at most. Every command shows in its tool log; click it to see what came back. **Stop** ends it. Its guide tells it never to delete, never to read your keys or logins, and to ask before installing anything.
 - **Watch cut**: review the whole timeline or its marked in/out range from the Timeline toolbar, or ask the Co-Director to watch the assembled story. The temporary video includes trims, effects, transitions and mixed audio. Watch defaults to Gemini 3.6 Flash, configurable in Settings → API. Google failures can fall back to Claude still frames, clearly labelled **no motion or sound**. This reviews the prepared edit, not live playback glitches.
 - **SPND**: the header chip tracks what this project has spent, with a per-render cost breakdown on click. **GEM** beside it shows what the watching has cost.
 
@@ -487,6 +490,8 @@ A dockable, tab-able, splittable layout you can rearrange however you want, then
 
 - **Dockable panels**: Library, Bin, Timeline Monitor, Clip Monitor, Timeline, Timeline Editor, Image Editor, Clip Gen, Video Editor, Bridge, Char Sheet, Co-Director, Project Styles, Queue, Watched, Sheet Gen, Assembly, and Folder panels all dock, tab, resize, split, and rearrange by dragging.
 - **Sheet Gen**: reference sheets straight from the video model. Right-click a Library image → make char plate / scene plate / expression plate: a boring 15-second capture renders (grey, static, a new view every 3 seconds), then **build sheet** pulls a clean frame per view and stacks the 2×2 sheet. The views land in their own Library folder, the sheet at the root, tagged so prompts take identity from it and never its framings.
+- **The compass plate**: a scene plate turns on one spot: east (the picture itself), then north, west and south. **▤ build sheet** makes the compass plate, each view labelled FACING EAST, NORTH, WEST or SOUTH. Scene plates made before 0.35.0 keep their five views and the 2×2.
+- **build card** on a character plate: the front, side, back and face side by side, with the char sheet printed beside them (name, character, features, voice). One 21:9 picture the model reads. The card lands in the Library and becomes the char sheet’s picture. If the char sheet is empty, it opens instead and Codi fills it in from the picture; press **build card** again when it is done.
 - **Assembly**: the Co-Director's first cut. **Assembly concept** writes the cut as an outline from your conversation and storyboard; correct it, **lock** it, **▶ assemble**: it watches every take, picks one per shot, trims, and lays the cut on a NEW timeline. Hover a block to see which shot it serves.
 - **Score Gen composes to the cut**: stretch a score bar over a span and press compose; the span renders to a proxy, Gemini watches it whole, and the beats land on the real cut points. **ElevenLabs Music v2** is a new score door: your beats become its section plan.
 - **Window menu**: every panel listed A to Z in the header's **Window ▾**. Closed ones reopen from there, nothing is a dead end.
@@ -653,6 +658,17 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 - **Quality**: H.264 at CRF 18, yuv420p, AAC 192k, faststart.
 - **Progress and reveal**: a probing, exporting, and percentage readout, then click the result to reveal it in your file browser.
 - **Timeline settings**: rename the timeline and set its aspect (16:9, 9:16, 1:1, 4:3, 3:4, or 21:9), with a clip count and total duration.
+
+---
+
+## New in 0.35.0
+
+- Build card on a character plate: the front, side, back and face side by side, with the char sheet printed beside them: name, character, features, voice. One 21:9 picture the model reads.
+- The card becomes the char sheet’s picture. If the char sheet is empty, it opens instead and Codi fills it in from the picture. Press build card again when it is done.
+- Scene plates turn on one spot: east, north, west, south. ▤ build sheet makes the compass plate, each view labelled FACING EAST, NORTH, WEST or SOUTH. Scene plates made before keep their five views.
+- Send the compass plate with previs cards and the prompt names the view behind each card. The studio floor shows N, E, S and W in the work views, with the grid.
+- Previs cards keep each card’s time and camera line. Before a render, the preflight says when the cards and the beats disagree. Redraw an older set to add them.
+- Codi runs PowerShell in your project folder, with a time limit. Every command shows in its tool log; click it to see what came back. Stop ends it.
 
 ---
 
