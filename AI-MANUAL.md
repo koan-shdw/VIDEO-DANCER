@@ -8,7 +8,26 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.35.0 (2026-10-27).*
+*Covers Video Dancer v0.36.0 (2026-11-01).*
+
+## New in 0.36.0
+
+- Listen fills the second language by itself: once the dialogue is heard, the other language is translated line by line, times kept. Lines that already have text stay as they are. If the translation fails, the lines stay empty and one line says why.
+- Translate: a row under the languages picks the model that translates, from every engine you have connected. It starts on your Co-Director’s. Make uses it too.
+- Codi reads a subtitle and writes its lines in either language, times kept. One Ctrl+Z undoes it.
+- The Subtitle panel’s sections fold: click a title or its arrow.
+- On a Mac, Codi’s shell runs sh, and its tool log says sh>.
+- Colour: Premiere’s Lumetri Color in its own panel. Right-click a block → colour…, or Window → Colour. Basic correction, creative, curves, colour wheels, hsl secondary and vignette, in Premiere’s order with Premiere’s ranges.
+- Input LUTs and looks: pick a .cube file, or browse… to copy one into the LUT folder. The look preview steps through the looks on the Monitor’s frame; a click applies the one shown.
+- Fourteen looks come with the app: five film stocks and nine styles, first in the Look dropdown under video dancer, above your own. Delete one and it stays gone.
+- Eyedroppers: white balance, the hsl key and the hue curves take their colour from a spot you click in the Timeline Monitor.
+- Scopes: Window → Scopes shows the histogram of the Timeline Monitor’s picture, red, green, blue and luma, and follows every grade change.
+- Auto in basic correction sets temperature, tint, exposure, contrast, highlights, shadows, whites, blacks and saturation from the frame. Intensity scales them.
+- Comparison view: ◧ on the Timeline Monitor shows a reference frame beside the live picture, or split across it. Drag the line, swap the sides, and move the reference by cut, by the scrub bar, or to this frame. The reference starts without the grade open in the Colour panel. Apply to reference holds that grade on it while the live picture takes your next changes, and ↺ takes it off.
+- Apply match sets the colour wheels and saturation so the block matches the reference frame. Face detection, ticked by default, finds the faces in both frames and counts them more in the match. The first match with it downloads the face model (~230 KB, in the Models card).
+- The Colour panel’s ≡ menu: copy grade and paste grade, save preset… and apply preset, and export .cube…, which writes the grade into the LUT folder. Sharpen, hsl secondary and vignette stay out of the .cube: a LUT cannot hold them.
+- Slider values type: click the number, type, Enter. In the Effects panel too.
+- A storyboard still in an export is the right way up and carries its block’s effects.
 
 ## New in 0.35.0
 
@@ -754,6 +773,55 @@ filmstrip frames filling the blocks edge to edge.
   speed plays at speed. ⛶ = safe-area guides; 🖥 = fullscreen mirror on a second display (Esc
   there closes).
 
+### Colour
+
+- Premiere's Lumetri Color in its own **Colour** panel. Open it: right-click a block → **colour…**, or Window →
+  Colour, or **open** on a colour row in the Effects panel. It follows the selected block, nest blocks and
+  storyboard blocks included.
+- **Sections**, in Premiere's order, each with its on box and ↺: basic correction, creative, curves, colour
+  wheels & match, hsl secondary, vignette. The slider ranges are Premiere's.
+- **Instances**: the header's dropdown lists the block's colour entries, with **＋ add colour** and **rename…**;
+  on/off and **↺ all** beside it. The first touch of a control adds the entry.
+- **Typed values**: click a slider's number, type, Enter commits, Esc cancels (the Effects panel too).
+- **Input LUT and look**: both dropdowns list the `.cube` files in the LUT folder (`Data\luts`); **browse…**
+  copies one in. A project keeps the file name only; a name missing from the folder shows as missing and the
+  grade draws without it. The **look preview** shows the Monitor's frame through one look: ‹ › step, a click
+  applies the one shown, the grip resizes it.
+- **Auto** (basic correction): sets temperature, tint, exposure, contrast, highlights, shadows, whites, blacks
+  and saturation from the frame in the Monitor. **Intensity** scales them, **reset** clears them.
+- **Eyedroppers**: white balance, the hsl key (set ＋ −) and the five hue curves. Press one, then click the
+  Timeline Monitor's picture; Ctrl+click samples a larger patch, Esc cancels.
+- **HSL secondary**: the H, S and L bars key a colour (top triangles = range, bottom triangles = soft edges);
+  denoise and blur refine the key; a wheel, temperature, tint, contrast, sharpen and saturation correct inside
+  it. The mask view shows the key in the Monitor only; the export renders the picture.
+- **Comparison view**: ◧ on the Timeline Monitor (or **comparison view** in the panel). A reference frame
+  beside the live picture, or split across it (vertical or horizontal). The bar under the picture moves the
+  reference: ◀ ▶ to the cuts, the scrub bar, **this frame**. ⇄ swaps the sides; drag the split line,
+  double-click it for the middle. The reference is drawn the way the export draws it, without the grade open
+  in the Colour panel (tag **before**). **apply to reference** puts that grade on it as it is now and holds it
+  there (tag **reference**), so the next changes show on the live picture only. **↺** takes it off, and moving
+  the reference starts it without the grade again. A block whose grade is not open shows as it is.
+- **Apply match**: needs the comparison view on. Sets the three colour wheels and the basic saturation so the
+  block matches the reference frame.
+- **Face detection**: a checkbox beside apply match, ticked by default (Premiere's default); stored on the colour
+  instance as `faces` (1 / 0), so copy grade, paste grade and presets carry it. Ticked, apply match first finds
+  the faces in the reference and in the block's frame (at up to 640 wide), and a pixel inside a face counts
+  three times in each luma third's mean and in the chroma spread. A toast says how many faces each frame had;
+  none found means the whole frame counted the same. Unticked, nothing is detected and the match counts every
+  pixel once. The model is YuNet 2023mar (OpenCV Zoo, MIT, 232,589 bytes, pinned by revision and sha256), the
+  `face` row of the Models card, in `Data\models\fx\`. While it is not on disk the button reads **apply match ·
+  downloads face model first (~230 KB)**; the click downloads it (the Models card raises) and then matches. A
+  model that fails to load leaves the match to run without faces, and the toast says why. Premiere's own face
+  weighting was not measured: the 3× is this app's number.
+- **The ≡ menu**: **copy grade** / **paste grade** (onto any block's open instance, or as a new one), **save
+  preset…** / **apply preset** (kept in `Data\colour-presets`), **export .cube…**, **scopes**. Export .cube
+  writes basic correction, creative, curves and the colour wheels as a 33-point `.cube` into the LUT folder;
+  sharpen, hsl secondary and vignette stay out (a LUT cannot hold them).
+- **Scopes**: Window → Scopes, or ≡ → scopes. The histogram of the Timeline Monitor's picture: levels 0 to 255
+  up the side, the pixel count at each level to the right; red, green, blue fills and the luma line, each
+  switched by its box. Follows seeks, playback and every grade change.
+- **Export** renders the same chain as the Monitor, graded storyboard stills included.
+
 ### PREVIS
 
 - Block a shot in grey 3D before you spend a gen: stand-in actors, real cameras, keys on one clock, shots and multicam cuts. The gen paints the look.
@@ -775,9 +843,12 @@ filmstrip frames filling the blocks edge to edge.
 
 - The Bin has a **SUBTITLES** tab: make a subtitle there, rename it, copy it, put it in folders.
 - The **SUB** track sits above the video rows. Drop a subtitle on a clip and it covers that clip (no clip: 10 s); it overwrites what it lands on. Drag to move, pull the edges to trim, click to select (Del removes). Its 👁 hides the subtitles on the Monitor, its padlock locks the row.
-- Double-click a SUB block or the Bin tile: the **Subtitle** panel opens. Two languages, a style card for each (font, size, colour, opacity, outline, weight; link 1 + 2 to change both), top or bottom with its height, the second language above or below, and every line with its start and end. The Timeline Monitor shows the subtitles live.
+- Double-click a SUB block or the Bin tile: the **Subtitle** panel opens. Two languages, a style card for each (font, size, colour, opacity, outline, weight; link 1 + 2 to change both), top or bottom with its height, the second language above or below, and every line with its start and end. The Timeline Monitor shows the subtitles live. Its sections (listen, languages, the style cards, position, lines) fold: click a title or its arrow.
 - **listen**: pick a model (ElevenLabs Scribe, $0.22 an hour; Gemini, about $0.10; Whisper large v3 on fal, about $0.04) and press listen. The Queue renders the stretch under each block without the score, the model hears the dialogue, and the lines come back with their times. A block’s hatched stretches have not been heard yet: **listen to the new part** hears only those and keeps every line already there.
-- **make** beside a language: the spoken language gets what was heard; any other language is translated line by line through your Co-Director’s model, times kept.
+- **translate**, under the languages: picks the model that translates, from every model on every engine you can reach (a saved key or a logged-in CLI). It starts on your Co-Director’s model and goes back to it when the app restarts.
+- After a listen, each language that was not the one heard fills its empty lines through **translate**, in one undo step. Lines that already have text stay. If it fails, the lines stay empty and a note says why; a missing key opens the key setup.
+- **make** beside a language: the spoken language gets what was heard; any other language is translated line by line through the model in **translate**, times kept.
+- The Co-Director reads a subtitle (its languages, where its blocks sit, every line with its times) and writes the text of the lines you name in either language, times kept. One Ctrl+Z undoes it.
 
 ## 10. Co-Director and the Director's Room
 
@@ -865,7 +936,7 @@ tinted until accepted as keep-or-revert cards. Every write is undoable.
 - **It watches video** (with a Google AI key, §2): "how's the latest render of KATA?" makes it
   watch the take and answer from what it saw, quoting motion, cuts and sound. Without the key
   it reads still frames and says so.
-- **Its shell**: it runs PowerShell (pwsh when installed, else Windows PowerShell) in the open
+- **Its shell**: it runs PowerShell (pwsh when installed, else Windows PowerShell; on a Mac, sh, shown as `sh>` in the tool log) in the open
   project's folder, for work no other tool covers: looking at files and folders, checking what
   is installed, ffmpeg and ffprobe, downloading media the user gives it a link to. Each command
   has a time limit: 2 minutes unless it asks for more, 10 at most; a command that runs out is
