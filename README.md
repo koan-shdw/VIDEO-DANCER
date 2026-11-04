@@ -695,6 +695,10 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 
 ---
 
+## New in 0.36.2
+
+- Nothing in the app changed: this is 0.36.1 with a release check behind it. The window tests that guard the installer now run before every tag.
+
 ## New in 0.36.1
 
 - Deletes go to the Recycle Bin: Cleanup, a mood, a LoRA on the shelf, a reverted guide. A delete of paid or hand work asks first: a clip, a selection, a score or a voice with takes, a subtitle with lines, a workspace nothing brings back.

@@ -8,7 +8,11 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.36.1 (2026-11-04).*
+*Covers Video Dancer v0.36.2 (2026-11-04).*
+
+## New in 0.36.2
+
+- Nothing in the app changed: this is 0.36.1 with a release check behind it. The window tests that guard the installer now run before every tag.
 
 ## New in 0.36.1
 
