@@ -2,14 +2,7 @@
  "app": "Video Dancer",
  "versions": [
   {
-   "v": "0.36.2",
-   "date": "2026-11-04",
-   "lines": [
-    "Nothing in the app changed: this is 0.36.1 with a release check behind it. The window tests that guard the installer now run before every tag."
-   ]
-  },
-  {
-   "v": "0.36.1",
+   "v": "0.36.3",
    "date": "2026-11-04",
    "lines": [
     "Deletes go to the Recycle Bin: Cleanup, a mood, a LoRA on the shelf, a reverted guide. A delete of paid or hand work asks first: a clip, a selection, a score or a voice with takes, a subtitle with lines, a workspace nothing brings back.",

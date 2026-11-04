@@ -695,11 +695,7 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 
 ---
 
-## New in 0.36.2
-
-- Nothing in the app changed: this is 0.36.1 with a release check behind it. The window tests that guard the installer now run before every tag.
-
-## New in 0.36.1
+## New in 0.36.3
 
 - Deletes go to the Recycle Bin: Cleanup, a mood, a LoRA on the shelf, a reverted guide. A delete of paid or hand work asks first: a clip, a selection, a score or a voice with takes, a subtitle with lines, a workspace nothing brings back.
 - One gesture, one undo step: Q / W, the end trim, ripple delete, gap close, Ctrl+K and the speed ripple move the pictures, the free audio, the scores and the SUB blocks together, honouring the locks. What a job brought in is never an undo step: it survives Ctrl+Z.
