@@ -18,7 +18,7 @@
 </p>
 <p align="center"><a href="https://www.shdw.work">shdw.work</a> · <a href="../../releases">every version</a> · <a href="AI-MANUAL.md">AI manual</a> · <a href="EULA.md">licence</a></p>
 
-![Video Dancer](docs/img/hero.png)
+![Video Dancer](docs/img/hero.jpg)
 
 
 An offline editor for AI video, built around the best possible workflow. The goal is to cut the number of generations you need by giving you granular control over your inputs. You block your shots out on a timeline as a storyboard, then turn that storyboard straight into video. And when a render is *almost* right, you don't re-roll it. You edit it with words (vid2vid) and keep every version.
@@ -49,7 +49,7 @@ documentation. Everything below is in it, from install to export.
 
 ## Library
 
-![the Library](docs/img/library.png)
+![the Library](docs/img/library.jpg)
 
 
 Every project gets its own image and music library. @-mention an image and it flows into your prompt and the upload queue at the same time.
@@ -130,10 +130,10 @@ A real multi-track NLE now: free positioning with gaps, stacked video tracks, al
 - **Copy, cut and paste**: **Ctrl+C** / **Ctrl+X** copy or cut the selected block: video, audio or score, and a linked clip goes as one. **Ctrl+V** pastes at the playhead on the block's own track and overwrites what is there; **Ctrl+Shift+V** inserts instead and pushes everything after it right. Right-click empty track space for **paste here**.
 - **Trim**: drag either edge (source-accurate, speed-aware). An **end trim ripples**: everything after it follows the edge so the sequence stays flush (Alt = leave the gap). **Ctrl on a flush edge = rolling trim**: the join slides, both neighbors adjust.
 - **Slice**: **C** arms the razor (click any clip, audio or score block to cut), **Ctrl+K** cuts at the playhead instantly, the selected block first.
-- **Per-block extras** (right-click): frame stills to the Library, **cross-dissolve…**, **speed 0.25–4×**, unlink audio, edit with AI, remove or **ripple delete**.
+- **Per-block extras** (right-click): frame stills to the Library, **cross-dissolve…**, **speed 0.25–4×** (Ctrl+R opens Clip Speed / Duration on the selection), unlink audio, edit with AI, remove or **ripple delete**.
 - **Dissolves you can drag**: drag the small marker at a cut to create a centered cross-dissolve. Its labeled block has two draggable edges and a cut line. Double-click for exact duration and Center, Start or End at cut. Stripes mean unused source footage has run out and edge frames repeat. Both shots otherwise keep moving, with effects intact. Delete removes the focused transition; Escape cancels a drag. The toolbar and right-click dialog also apply dissolves to selected clips. Clip positions stay fixed; audio fades are separate.
 - **Markers and range**: **M** drops a marker at the playhead (right-click to name, recolor, remove). **I / O** set an in/out range: playback loops it, export renders just that window.
-- **Navigation**: wheel pans, **Ctrl+wheel zooms at the cursor**, `-` / `=` / `\` zoom out / in / fit, **J/K/L** shuttle (J plays backward, each press faster, up to 8×), ←/→ jump cuts (or nudge the selected block by a frame, Shift = 1s), autoscroll follows playback.
+- **Navigation**: wheel pans, **Ctrl+wheel zooms at the cursor**, `-` / `=` / `\` zoom out / in / fit, **J/K/L** shuttle (J plays backward, each press faster, up to 8×), ←/→ step the playhead a frame (Shift = 5), ↑/↓ jump to the previous / next cut, `,` / `.` nudge the selected block a frame (Shift = 5), Q / W ripple-trim the clip under the playhead to it, autoscroll follows playback.
 - **Smooth playback**: a double-buffered engine preloads every cut. No stray frames between blocks. Safe-area guides (⛶) and a second-display mirror (🖥) on the toolbar.
 - **Per-block take picker**: choose which take (or **S-B**, the live storyboard) this exact slot plays, without changing other copies of the clip.
 - **Dynamic vs pinned blocks**: drag a clip down and the block follows the ★ keeper: pick another take in Clip Gen and the shot swaps live, marked by a dotted amber ring and a ★ on its take label. Drag a take card down and the block pins to that take for good, named `KATA - take 3`. The per-block picker pins any block after the fact.
@@ -259,7 +259,7 @@ Storyboard a shot beat by beat on a small timeline, then let it compile into cle
   ![char sheet](docs/img/charsheet.png)
 
 - **Character links**: character fields can also live-link to another clip's character, per-field, with optional override text added after the linked text. Double-click a link chip to take the field over: its text drops in for editing and the field replaces the link; click the faded chip to link back up (the field clears).
-- **Project Styles**: project-wide style blocks (master look, production notes, lighting…) built in the Project Styles panel and pinned into every prompt.
+- **Style Sheet**: project-wide style blocks (master look, production notes, lighting…) built in the Style Sheet panel and pinned into every prompt.
 - **Production fields**: avoid (required), audio design, overall lighting, critical constraint, subtext.
 - **Field linking**: link any Scene or Production field to a project style or another clip to inherit its value, with hover preview. Double-click a chip to take the field over (same gesture as character links); right-click opens the source.
 - **YAML assembly**: the freeform prompt and structured fields merge into valid YAML. Characters, the cinematic storyboard, and production notes each get their own block, and empty fields are dropped. The preview is selectable, and Ctrl+F over it opens a find bar with match count and prev/next.
@@ -303,15 +303,15 @@ Every render is a take. Keep them all, compare them, and pick a keeper, without 
 
 ## Models
 
-Every way to render, side by side in one dropdown. **MODEL** picks the model; **VIA** picks who runs it (fal, ModelArk, Astria, a Bridge login, or Bridge auto). The via choice is remembered per model, and a pick the app can't honor refuses before a cent moves; it never reroutes on its own.
+Every way to render, side by side in one dropdown. **MODEL** picks the model; **VIA** picks who runs it (fal, ModelArk, Astria, Venice, a Bridge login, or Bridge auto). The via choice is remembered per model, and a pick the app can't honor refuses before a cent moves; it never reroutes on its own.
 
 - **Seedance 2 (fal, ref2v)**: up to nine reference images, plus @video and @audio reference slots.
 - **Seedance 2 (fal, i2v)**: a start frame plus an optional end frame.
-- **Seedance 2.5 (fal)**: the same reference suite, native clips to 30 seconds.
-- **Seedance 2 / 2.5 (ModelArk)**: direct from ByteDance at the official token rate. Image and audio refs, 10-bit 4K on 2.0; no real human faces in reference images (their policy).
+- **Seedance 2.5 (fal)**: up to 30 reference images, 10 videos and 10 audios (50 files in all), 4 to 30 seconds or auto, 480p to 1080p, no seed. Token-billed: the price shown is worked out from the token rate and assumes 16:9. A **draft** switch renders a cheap 480p draft first; **finish at 1080p** on a draft take renders the same video full size as a new take.
+- **Seedance 2 / 2.5 (ModelArk)**: direct from ByteDance at the official token rate (the price shown is worked out from it and assumes 16:9); 2.5 renders native 30-second clips at 480p to 1080p. Image and audio refs, 10-bit 4K on 2.0; no real human faces in reference images (their policy).
 - **Seedance 2 (Astria)**: text-to-video and first/last-frame i2v on Astria plan credits.
 - **Seedance 2 / 2.5 (Bridge logins)**: through your Higgsfield, Runway, Magnific or Pika account (see Bridge below).
-- **Gemini Omni Flash (fal)**: text-to-video, ref2v (up to ten refs), i2v. Always 720p, 3–10 seconds, audio always on. It's also the engine behind vid2vid.
+- **Gemini Omni Flash 1.1 (fal)**: text-to-video, ref2v (up to ten image refs and three video refs of three seconds each), i2v with an optional end frame. 360p to 4K, 3–10 seconds, audio always on, no seed. It's also the engine behind vid2vid, and on your Google key it extends a clip by 3 to 10 seconds.
 - **Models folder**: **change** at the top of the Models card picks where downloads go. It applies on the next start; files already there stay where they are.
 - **LTX 2.5 (local)**: renders on your own NVIDIA GPU, free, sound included. The Models panel installs everything once: a private Python runtime, the engine, and your pick of sizes from quality (int8) down to minimum (Q2), plus the full dev bf16 model. Multi-subject reference images ride in through MSR.
 - **MiniMax H3 (local)**: a second video engine on your own NVIDIA GPU, installed from its own area of the Models card. Refs, 4 to 15 seconds, an upscale switch, and LoRAs from the same side panel Image Gen uses.
@@ -331,7 +331,7 @@ Every way to render, side by side in one dropdown. **MODEL** picks the model; **
 
 Log in instead of pasting keys. The Bridge panel connects your supplier ACCOUNTS: press login on a row and that supplier's own sign-in page opens in the browser; the app stays signed in afterwards and renders spend that account's subscription credits.
 
-- **Suppliers**: Higgsfield and Runway (proven live), Magnific and Pika (their paid tiers required; the rows say so), Artlist and ElevenLabs (they don't allow outside apps yet; those rows sit greyed with the reason).
+- **Suppliers**: Higgsfield and Runway (proven live), Magnific and Pika (their paid tiers required; the rows say so), Artlist and ElevenLabs (their login goes through the app's own public page; not proven live yet).
 - **The pool**: each account's credits in the supplier's own words, one stacked bar of who holds what share, and estimated render minutes at 480/720/1080 (marked est; estimates sharpen as real renders teach real rates).
 - **Bridge (auto)**: pick Bridge as the via and the app spends from whichever logged-in account holds the most credit. The Queue names the account it picked.
 - **The conversation**: while a Bridge render runs, the app and the supplier talk in faint speech bubbles behind the Queue: the ask, the reply, the job accepted, in plain words.
@@ -351,9 +351,9 @@ The roll of the dice, tamed. When a take is 90% there, you don't burn money re-r
 - **Takes in a sidebar**: every generation is a take card in the **takes** sidebar, the source first, each branch under "from original" or "from T1". Click a card and Generate branches from it. Nothing touches the Bin or Library until you take a result out.
 - **Keep a result**: drag its card onto empty Bin space (a new clip), onto a clip card (a new take) or onto the timeline (a new clip at the drop point). Right-click a card for the same bakes, including **bake → Library videos**, where the result can become `@video1` for the next generation.
 - **◉ primary** (Library-video sources): right-click a card and the Library entry wears that render, every @video ref follows it, and it reverts to the original anytime.
-- **Generate now and ＋ Queue**: pinned at the bottom, the button names the model and the price. Jobs show in the Queue with live status and come back after a quit or a crash.
+- **Generate now and ＋ Queue**: pinned at the bottom, the button names the model and the price. Jobs show in the Queue with live status; one already sent to the supplier is rescued after a quit or a crash, one still waiting is offered back as a Queue row.
 - **Chain it**: hit ⑂ on an edit's take to edit the edit. Every step keeps its own takes.
-- **Cost**: Omni roughly $0.14 per second all-in, Kling O3 Edit about $0.17 per output second, shown before you commit.
+- **Cost**: Omni edits $0.10 per output second, Kling O3 Edit about $0.17 per output second, shown before you commit.
 
 Both edit engines run through your fal key. Omni: Voice editing isn't supported by the model, and editing your own uploaded footage is unavailable in the EEA, Switzerland, and the UK (editing generated video works everywhere).
 
@@ -377,7 +377,7 @@ requests cancellation of running jobs and keeps completed files.
 - **@mention images**: type @ in the chat to hand it a Library image; it looks at the picture, not just the name.
 - **Type while it thinks**: queue notes mid-response. All waiting notes are sent together in order as one follow-up after the current reply. Notes arriving during that follow-up form the next batch; individual waiting notes can still be removed.
 - **Two engines**: your Anthropic API key by default, or (Settings → Co-Director) a **Claude Code bridge** that drives your own installed Claude Code through your subscription login. The bridge loads its tools up front, so no search round before the first write.
-- **Pick the model**: the bridge offers Fable 5, Opus 5.5, Opus 5, Sonnet 5 and Haiku 4.5 in Settings; the Room's chip flips Sonnet 5 and Opus 5.5. If your Claude Code is too old for a model, the chat says so and **update claude code** runs the update and sends your message again. Settings shows whether Claude Code is logged in, and an expired login is named in plain words.
+- **Pick the model**: the bridge offers Fable 5.1 (its default), Opus 5.5, Sonnet 5.5, Fable 5, Opus 5, Sonnet 5 and Haiku 4.5 in Settings; the API lane lists the same seven with Sonnet 5.5 recommended. The Room's chip flips between the newest Opus and the newest Sonnet (Opus 5.5 ⇄ Sonnet 5.5). If your Claude Code is too old for a model, the chat says so and **update claude code** runs the update and sends your message again. Settings shows whether Claude Code is logged in, and an expired login is named in plain words.
 - **It shows what it read**: under send, after every exchange: rounds, tokens read per round, tokens written. Hover for the split (fresh against cached) and what the prompt was made of. The exact prompt lands in `codir-last-prompt.txt` in the app data folder.
 - **Its guides**: eight markdown files with load toggles (Settings → Co-Director): who it is and how it works, operations (the procedure and reply shapes), library (prompting knowledge per engine), gaffer (camera, action and effects), previs, ideas (the idea engine for loose ideas), fail (the misreads it checks before you pay) and learning. Fork them, tune them, feed it your own rules. It saves a rule only when you say save; those rules live in their own file, so every update reaches its instructions.
 - **It learns from corrections**: every correction goes in a dated log; ask for a review and it proposes which ones become standing rules.
@@ -391,7 +391,7 @@ requests cancellation of running jobs and keeps completed files.
 - **It watches video**: with a Google AI key, "how's the latest render of KATA?" makes it watch the take with Gemini Flash and answer from what it saw. Without the key it reads still frames and says so.
 - **Subtitles**: it reads a subtitle (its languages, where its blocks sit, every line with its times) and writes the text of the lines you name in either language, times kept. One Ctrl+Z undoes it.
 - **Its shell**: it runs PowerShell (sh on a Mac) in your project folder for work no other tool covers (looking at files, ffmpeg and ffprobe, downloading media you give it a link to), with a time limit: 2 minutes unless it asks for more, 10 at most. Every command shows in its tool log; click it to see what came back. **Stop** ends it. Its guide tells it never to delete, never to read your keys or logins, and to ask before installing anything.
-- **Watch cut**: review the whole timeline or its marked in/out range from the Timeline toolbar, or ask the Co-Director to watch the assembled story. The temporary video includes trims, effects, transitions and mixed audio. Watch defaults to Gemini 3.6 Flash, configurable in Settings → API. Google failures can fall back to Claude still frames, clearly labelled **no motion or sound**. This reviews the prepared edit, not live playback glitches.
+- **Watch cut**: review the whole timeline or its marked in/out range from the Timeline toolbar, or ask the Co-Director to watch the assembled story. The temporary video includes trims, effects, transitions and mixed audio. Watch defaults to Gemini 3.8 Flash, configurable in Settings → Watch. Google failures can fall back to Claude still frames, clearly labelled **no motion or sound**. This reviews the prepared edit, not live playback glitches.
 - **SPND**: the header chip tracks what this project has spent, with a per-render cost breakdown on click. **GEM** beside it shows what the watching has cost.
 
 ---
@@ -411,7 +411,7 @@ Every paid job (renders, video edits and Image Edit runs) lines up and runs one 
 - **Results flow in order**: takes drop into the Bin (and adopt into the exact timeline slot you were editing) whether or not you're watching.
 - **The queue talks**: while a Bridge render runs, the app and the supplier converse in faint speech bubbles behind the queue rows: the ask, the reply, the job accepted, typed out live in plain words. Errors speak the supplier's own words too, never raw code.
 
-Jobs still *waiting* when you quit don't survive a restart. But a render already **sent to a supplier is rescued**: if the app dies mid-render, the finished video (that you paid for) is recovered and lands as its take on the next launch, on every lane: fal, ModelArk, Astria, and the Bridge logins. There's also a manual "add take from file…" for anything you pulled down yourself.
+Jobs still *waiting* when you quit are kept with their project and come back as a row at the top of the Queue on the next open: **re-queue** puts them back in their order, **forget** drops them; nothing was rendered or paid. A render already **sent to a supplier is rescued**: if the app dies mid-render, the finished video (that you paid for) is recovered and lands as its take on the next launch, on every lane: fal, ModelArk, Astria, and the Bridge logins. There's also a manual "add take from file…" for anything you pulled down yourself.
 
 ---
 
@@ -419,7 +419,7 @@ Jobs still *waiting* when you quit don't survive a restart. But a render already
 
 Two monitors, like a proper NLE. The Program Monitor plays the assembled timeline. The Clip Preview gives you a frame-accurate single-clip view with trim handles.
 
-![clip monitor](docs/img/monitor.png)
+![clip monitor](docs/img/monitor.jpg)
 
 **Program (Timeline) Monitor**
 
@@ -452,7 +452,7 @@ Two monitors, like a proper NLE. The Program Monitor plays the assembled timelin
 
 ## Image Editor
 
-![Image Editor](docs/img/imageeditor.png)
+![Image Editor](docs/img/imageeditor.jpg)
 
 
 A node-tree image editor with its own results history. Generate, branch, tag the keepers back to your Library, and set a primary that every clip follows.
@@ -509,9 +509,9 @@ Krea 2 on your own GPU, free, through the same bundled engine LTX runs on. A pan
 
 A dockable, tab-able, splittable layout you can rearrange however you want, then save as named workspaces and snap between them.
 
-![the workspace](docs/img/workspace.png)
+![the workspace](docs/img/workspace.jpg)
 
-- **Dockable panels**: Library, Bin, Timeline Monitor, Clip Monitor, Timeline, Timeline Editor, Effects, Colour, Scopes, Image Editor, Clip Gen, Video Editor, Bridge, Char Sheet, Co-Director, Project Styles, Queue, Watched, Sheet Gen, Assembly, and Folder panels all dock, tab, resize, split, and rearrange by dragging.
+- **Dockable panels**: Library, Bin, Timeline, Timeline Monitor, Clip Monitor, Timeline Editor, Clip Gen, Image Gen, Image Editor, Video Editor, Effects, Colour, Scopes, Enhance, Models, Bridge, Queue, Watched, Char Sheet, Style Sheet, Subtitle, Score Gen, Voice Gen, SFX Gen, Sheet Gen, Assembly, PREVIS, Co-Director, and Folder panels all dock, tab, resize, split, and rearrange by dragging.
 - **Sheet Gen**: reference sheets straight from the video model. Right-click a Library image → make char plate / scene plate / expression plate: a boring 15-second capture renders (grey, static, a new view every 3 seconds), then **build sheet** pulls a clean frame per view and stacks the 2×2 sheet. The views land in their own Library folder, the sheet at the root, tagged so prompts take identity from it and never its framings.
 - **The compass plate**: a scene plate turns on one spot: east (the picture itself), then north, west and south. **▤ build sheet** makes the compass plate, each view labelled FACING EAST, NORTH, WEST or SOUTH. Scene plates made before 0.35.0 keep their five views and the 2×2.
 - **build card** on a character plate: the front, side, back and face side by side, with the char sheet printed beside them (name, character, features, voice). One 21:9 picture the model reads. The card lands in the Library and becomes the char sheet’s picture. If the char sheet is empty, it opens instead and Codi fills it in from the picture; press **build card** again when it is done.
@@ -548,7 +548,7 @@ Bring your own keys, watch your fal balance live, and keep everything stored on 
 
 - **fal API key**: used for both video and image generation, stored locally.
 - **fal admin key**: a billing-scope key that powers the live credit balance.
-- **Astria API key**: stored for later. Not used by Video Dancer yet.
+- **Astria API key**: Seedance 2 on your Astria plan credits (see Models above).
 - **Bridge logins**: no keys at all: the **Bridge panel** signs into Higgsfield, Runway, Magnific and Pika accounts on their own sites, and renders bill those subscriptions' credits (see Generation and models above).
 - **Anthropic API key**: powers the **Co-Director** copilot (or switch it to the Claude Code bridge under Settings → Co-Director). The same lane answers supplier questions on Bridge renders.
 - **Google AI key**: lets the Co-Director watch video and Score Gen compose from footage (Gemini Flash). A **GEM** chip shows what the watching has cost.
@@ -567,7 +567,7 @@ Bring your own keys, watch your fal balance live, and keep everything stored on 
 - **Saved preferences**: the filmstrip toggle, playhead snap, beat snap, thumbnail sizes, and theme all remember their state across restarts.
 - **Updates**: a manual update check and a restart-to-install action on Windows. A quiet header chip appears if an update actually fails (being offline doesn't count).
 
-Keys are encrypted at rest with your OS keychain and never leave your machine.
+Keys never leave your machine. They live in the app's data folder (`%APPDATA%\vi-dancer` on Windows, `~/Library/Application Support/vi-dancer` on a Mac), encrypted with your OS keychain where one is available and as plain text where it is not.
 
 ---
 
@@ -580,24 +580,29 @@ The shortcuts you'd expect from an NLE, and they stay out of your way while you'
 
 | Key | Action |
 |---|---|
-| Space | Play or pause (the fronted monitor owns it) |
-| Left / Right | Jump to the previous / next cut. With a block selected, nudge it a frame (Shift = 1s) |
+| Space | Play / pause (the fronted monitor owns it) |
+| ← / → | Step the playhead 1 frame (Shift = 5) |
+| ↑ / ↓ | Jump to the previous / next cut |
 | Home / End | Timeline start / end |
-| J / K / L | Play backward · stop · play (press again: faster, up to 8×) |
-| C | Slice tool (click a clip, audio or score block to cut) |
-| S | Snapping on / off |
-| Ctrl+K | Razor at the playhead |
-| A | Select forward: click a clip to grab it + everything after (V / Esc cancels) |
+| J / K / L | Play backward · stop · play (press J or L again: faster, up to 8×) |
+| Q / W | Ripple-trim the clip under the playhead: cut its head / tail to the playhead, everything after closes up |
+| , / . | Nudge the selected block(s) 1 frame left / right (Shift = 5) |
+| C | Slice tool (click a clip to cut) |
+| S | Snapping on / off (both magnets) |
+| A | Select forward: click a clip to select it + everything after (V / Esc cancels) |
+| V | Selection tool: back from the pen, select forward or the slice tool |
+| P | Pen tool: on a tall audio lane, click the volume line for a keyframe, drag a box to select keyframes; clips stay put |
+| Ctrl+K | Razor at the playhead (the selected clip first, else the topmost visible) |
+| Ctrl+R | Clip Speed / Duration on the selection |
 | M | Marker at the playhead |
 | I / O | Set the in / out range (loops playback, windows the export) |
 | − / = / \\ | Zoom out / in / fit |
-| Ctrl+C / Ctrl+X | Copy / cut the selected block (video, audio or score; a linked clip goes as one) |
-| Ctrl+V / Ctrl+Shift+V | Paste at the playhead: overwrite / insert |
-| Alt+Delete | Remove one half of a linked clip (Delete takes both) |
-| Delete or Backspace | Remove the selected block, group, or gap |
-| Escape | Clear selection, disarm tools, exit maximize, or close a modal |
-| Ctrl+Z or Cmd+Z | Undo |
-| Ctrl+Shift+Z or Ctrl+Y | Redo |
+| Ctrl+C / Ctrl+X | Copy / cut the selected block: video, lane audio or score; a linked clip goes as one |
+| Ctrl+V / Ctrl+Shift+V | Paste at the playhead on its own track or lane: overwrite / insert (everything after shifts right) |
+| Alt+Delete | Delete one half of a linked clip (Delete takes both) |
+| Delete or Backspace | Remove the selected timeline block |
+| Escape | Clear selection, cancel slice, close overlays, restore a maximized panel |
+| Ctrl+Z / Ctrl+Shift+Z (or Ctrl+Y) | Undo / redo (project-wide) |
 | ? | Toggle the cheat sheet |
 | Ctrl+Scroll over the Bin or Library | Thumbnail size, Explorer-style |
 | Wheel / Ctrl+Wheel over the timeline | Pan / zoom at the cursor |
@@ -614,17 +619,23 @@ Almost everything moves by drag: images into prompts, clips onto timelines, take
 |---|---|
 | Image | Library, to a clip's ref, start, or end slot, the prompt, the references, the Image Editor, or straight onto the timeline (it becomes a clip) |
 | Images (multi-select) | Library, to anywhere. Or right-click the selection to make clips / one clip with the images as beats |
+| Watched tile (👁) | Watched, to the Library or a clip slot: imports it into the project |
 | Clip | Bin, to any timeline track at any time |
-| Take card | Clip Gen, to a field (restore), the Bin (clone), or the timeline |
-| Timeline block | anywhere: along time, across tracks; dropping on clips overwrites them |
+| Take card or T-chip | Clip Gen, to a field (restore just that field), the Bin (clone into a new clip), or the timeline |
+| Timeline block | anywhere: along time, across tracks; dropping on clips overwrites them. Alt = a duplicate, Ctrl on the drop = insert (everything after shoves right), Shift = keep its time and change only the track, Ctrl+Alt on a trimmed block = slip |
+| Block edge | trim; an end trim ripples everything after it (Alt = leave the gap, Ctrl = rolling) |
+| Loop tail's end grip | where a ⟲ loop stops; release at the natural wall to go elastic again |
 | Bin clip (alt-drag) | to your desktop or any folder: copies the video file out |
 | Clip or image | onto a folder, or the root |
 | Beat | reorder within the beats bar |
-| Music track | Library, to a timeline audio lane |
+| Music track (♪) | Library, to the audio lanes: a teal block on the lane under the cursor; several can layer, ⋮⋮ marks the one driving the beat grid |
+| Score (♪) | Score Gen, to the audio lanes: a purple block; stretch it over a span and compose reads that span |
+| Free (green) audio block | between lanes; its edges trim |
 | Image-tree node | Image Editor, to the Library |
 | Civitai image | a browser, to the Image Gen PNG box (prompt and LoRAs) |
 | Web image | a browser, to the Library |
 | OS files | desktop, to the Library |
+| Bar under a Gen / Edit preview | resizes the preview (remembered) |
 
 ---
 
@@ -678,11 +689,31 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 - **Storyboard-aware**: un-rendered clips export as their beat reference frames, held for each beat's window, matching what the monitor shows.
 - **Music mix**: the music lane is mixed under the clip audio, honoring its start and trim. Muted clips become silent.
 - **Fill crop**: clips are scaled up and center-cropped to fill the canvas, with no letterboxing.
-- **Quality**: H.264 at CRF 18, yuv420p, AAC 192k, faststart.
+- **Quality**: H.264, yuv420p, AAC 192k, faststart. Three tiers per timeline: **standard** (CRF 18, medium preset) unless set otherwise, **draft** (CRF 23, veryfast) and **high** (CRF 14, slow). Today only the Co-Director's export-settings tool sets the tier; nothing in the Timeline Editor shows it.
 - **Progress and reveal**: a probing, exporting, and percentage readout, then click the result to reveal it in your file browser.
 - **Timeline settings**: rename the timeline and set its aspect (16:9, 9:16, 1:1, 4:3, 3:4, or 21:9), with a clip count and total duration.
 
 ---
+
+## New in 0.36.1
+
+- Deletes go to the Recycle Bin: Cleanup, a mood, a LoRA on the shelf, a reverted guide. A delete of paid or hand work asks first: a clip, a selection, a score or a voice with takes, a subtitle with lines, a workspace nothing brings back.
+- One gesture, one undo step: Q / W, the end trim, ripple delete, gap close, Ctrl+K and the speed ripple move the pictures, the free audio, the scores and the SUB blocks together, honouring the locks. What a job brought in is never an undo step: it survives Ctrl+Z.
+- The razor stays armed until V or Esc. Ctrl+K cuts every unlocked block under the playhead in one go. A subtitle line saves when you leave the field or press Enter.
+- Esc closes the top layer only: a dialog, a dropdown, a menu, a popover, the Room. Every dropdown is the house dropdown now, and a greyed control shows its reason when you point at it.
+- Nothing fails silently: an action that stops shows a toast naming the action and the reason, and its busy mark clears. Recovery, project and compose messages reach you as toasts too.
+- What the Monitor plays is what renders: fades, a reversed block’s sound and music levels land at the same second in a range export as in the full one. The export honours the SUB track’s eye and draws subtitles at the Monitor’s size.
+- Listen and Make: ✕ cancels the job, progress shows in the panel, your typed text wins over the translation, and a project switch mid-job saves nothing into the other project.
+- Every form saves when the window closes or the app quits; a quit while local work runs asks first. A load never saves. A render from a form you have not committed makes its clip first, so two renders are two clips.
+- The last session’s queued rows come back as a Queue row per project, with re-queue and forget, and wait for your word.
+- Accepted means persisted: a job a supplier took is on disk before anything else, so a crash never loses it or pays for it twice. Recovery lands a download already on disk without fetching it again.
+- Results land in the project that asked: a render, a card, an enhance or a Co-Director write that finishes after you switched projects goes to its own project, on its next open. A render with no project open refuses. New Project says why when it cannot create. A project whose folder moved gets a pick-the-folder-again door.
+- Saves land in place, never half-written, and a file that cannot be read is never written over as empty. Deleting a card version keeps its files and scrubs every clip’s references.
+- Local engines: the Dancer apps share one GPU turn, and a caller waits instead of seeing busy in another Dancer app. ⏻ free GPU stops the idle workers and names the busy one.
+- Updates: a quit never installs; the chip asks before the restart. Electron 44.9.3. The 80s dark fantasy mood no longer ships.
+- Colour: apply match stops with a word if the block, the project or the reference moved under it, and a reference that could not be drawn says why. The Timeline Monitor’s right buttons fold at narrow widths.
+- LoRAs: one chip in Clip Gen and Image Gen; a same-name drop lands beside as name (2), or says the file is already on the shelf.
+- The README and the manual say what the app does today: the keys, Seedance 2.5, the Queue row at quit, the Claude Code login under Settings → Connections.
 
 ## New in 0.36.0
 
@@ -922,7 +953,7 @@ Co-Director exchange continuing after real renders remains unverified.
 - Eleven v4 and v4 Turbo voices: pick one of yours, design one, or clone a sample.
 - Lyria 3.5 in Score, with up to 10 pictures to set the mood.
 - ElevenLabs Music v2.5 in Score.
-- SFX Gen (Window menu): sound effects from the footage under them (Sonilo) or from words (ElevenLabs).
+- SFX Gen (Window menu): sound effects from the footage under them (Sonilo) or from words (ElevenLabs), placed on a score track.
 - Lip-sync in the Video Editor with sync-3 or VEED Lipsync v2. Right-click a block to lip-sync it to the sound under it.
 - Music refs in Score: drop a track in and ACE-Step or ElevenLabs Music follows it, from only its style to its tune.
 - Voice extras: a char sheet’s voice comes with it as an @audio slot, each slot is timbre or dialogue, and a clip’s dialogue lines render to a Library track.
@@ -964,13 +995,13 @@ Download it from [shdw.work](https://www.shdw.work) or the buttons at the top. E
 
 The installers aren't signed yet. It's safe: the warnings below are just the OS being careful about a new publisher.
 
-**Windows.** When SmartScreen pops up, click "More info", then "Run anyway". After the first install it updates itself silently in the background.
+**Windows.** When SmartScreen pops up, click "More info", then "Run anyway". After the first install it looks for updates on launch and every 3 hours, downloads one in the background, and installs it when you press **restart** on the header chip; a quit never installs.
 
-**macOS.** Because it's unsigned, right-click the app, then "Open", then "Open" the first time (a normal double-click is blocked). There's no auto-update on macOS yet, so download the newest dmg from [shdw.work](https://www.shdw.work) when a new version ships.
+**macOS.** Because it's unsigned, the first open is blocked. On macOS 15 and later: try to open it once, then System Settings → Privacy & Security → **Open Anyway**. On older versions: right-click the app, then "Open", then "Open". There's no auto-update on macOS yet, so download the newest dmg from [shdw.work](https://www.shdw.work) when a new version ships.
 
 Bring your own fal API key. Add it in Settings and you're ready to generate. Your keys and files stay on your machine.
 
-**Hit a bug?** Click the Video Dancer logo for **About**, then **open the log folder**, and attach `main.log` to a [new issue](../../issues/new).
+**Hit a bug?** Click the Video Dancer logo for **About**, then **open the log folder**. `main.log` holds the session's errors and warnings, every supplier exchange in full, and your project names and paths, so read it before you attach it to a [new issue](../../issues/new) and cut what you'd rather keep.
 
 ---
 

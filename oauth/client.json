@@ -1,5 +1,5 @@
 {
-  "client_id": "https://koan-shdw.github.io/video-dancer/oauth/client.json",
+  "client_id": "https://koan-shdw.github.io/VIDEO-DANCER/oauth/client.json",
   "client_name": "Video Dancer",
   "client_uri": "https://github.com/koan-shdw/video-dancer",
   "redirect_uris": [

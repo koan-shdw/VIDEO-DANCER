@@ -2,6 +2,51 @@
  "app": "Video Dancer",
  "versions": [
   {
+   "v": "0.36.1",
+   "date": "2026-11-04",
+   "lines": [
+    "Deletes go to the Recycle Bin: Cleanup, a mood, a LoRA on the shelf, a reverted guide. A delete of paid or hand work asks first: a clip, a selection, a score or a voice with takes, a subtitle with lines, a workspace nothing brings back.",
+    "One gesture, one undo step: Q / W, the end trim, ripple delete, gap close, Ctrl+K and the speed ripple move the pictures, the free audio, the scores and the SUB blocks together, honouring the locks. What a job brought in is never an undo step: it survives Ctrl+Z.",
+    "The razor stays armed until V or Esc. Ctrl+K cuts every unlocked block under the playhead in one go. A subtitle line saves when you leave the field or press Enter.",
+    "Esc closes the top layer only: a dialog, a dropdown, a menu, a popover, the Room. Every dropdown is the house dropdown now, and a greyed control shows its reason when you point at it.",
+    "Nothing fails silently: an action that stops shows a toast naming the action and the reason, and its busy mark clears. Recovery, project and compose messages reach you as toasts too.",
+    "What the Monitor plays is what renders: fades, a reversed block’s sound and music levels land at the same second in a range export as in the full one. The export honours the SUB track’s eye and draws subtitles at the Monitor’s size.",
+    "Listen and Make: ✕ cancels the job, progress shows in the panel, your typed text wins over the translation, and a project switch mid-job saves nothing into the other project.",
+    "Every form saves when the window closes or the app quits; a quit while local work runs asks first. A load never saves. A render from a form you have not committed makes its clip first, so two renders are two clips.",
+    "The last session’s queued rows come back as a Queue row per project, with re-queue and forget, and wait for your word.",
+    "Accepted means persisted: a job a supplier took is on disk before anything else, so a crash never loses it or pays for it twice. Recovery lands a download already on disk without fetching it again.",
+    "Results land in the project that asked: a render, a card, an enhance or a Co-Director write that finishes after you switched projects goes to its own project, on its next open. A render with no project open refuses. New Project says why when it cannot create. A project whose folder moved gets a pick-the-folder-again door.",
+    "Saves land in place, never half-written, and a file that cannot be read is never written over as empty. Deleting a card version keeps its files and scrubs every clip’s references.",
+    "Local engines: the Dancer apps share one GPU turn, and a caller waits instead of seeing busy in another Dancer app. ⏻ free GPU stops the idle workers and names the busy one.",
+    "Updates: a quit never installs; the chip asks before the restart. Electron 44.9.3. The 80s dark fantasy mood no longer ships.",
+    "Colour: apply match stops with a word if the block, the project or the reference moved under it, and a reference that could not be drawn says why. The Timeline Monitor’s right buttons fold at narrow widths.",
+    "LoRAs: one chip in Clip Gen and Image Gen; a same-name drop lands beside as name (2), or says the file is already on the shelf.",
+    "The README and the manual say what the app does today: the keys, Seedance 2.5, the Queue row at quit, the Claude Code login under Settings → Connections."
+   ]
+  },
+  {
+   "v": "0.36.0",
+   "date": "2026-11-04",
+   "lines": [
+    "Listen fills the second language by itself: once the dialogue is heard, the other language is translated line by line, times kept. Lines that already have text stay as they are. If the translation fails, the lines stay empty and one line says why.",
+    "Translate: a row under the languages picks the model that translates, from every engine you have connected. It starts on your Co-Director’s. Make uses it too.",
+    "Codi reads a subtitle and writes its lines in either language, times kept. One Ctrl+Z undoes it.",
+    "The Subtitle panel’s sections fold: click a title or its arrow.",
+    "On a Mac, Codi’s shell runs sh, and its tool log says sh>.",
+    "Colour: Premiere’s Lumetri Color in its own panel. Right-click a block → colour…, or Window → Colour. Basic correction, creative, curves, colour wheels, hsl secondary and vignette, in Premiere’s order with Premiere’s ranges.",
+    "Input LUTs and looks: pick a .cube file, or browse… to copy one into the LUT folder. The look preview steps through the looks on the Monitor’s frame; a click applies the one shown.",
+    "Fourteen looks come with the app: five film stocks and nine styles, first in the Look dropdown under video dancer, above your own. Delete one and it stays gone.",
+    "Eyedroppers: white balance, the hsl key and the hue curves take their colour from a spot you click in the Timeline Monitor.",
+    "Scopes: Window → Scopes shows the histogram of the Timeline Monitor’s picture, red, green, blue and luma, and follows every grade change.",
+    "Auto in basic correction sets temperature, tint, exposure, contrast, highlights, shadows, whites, blacks and saturation from the frame. Intensity scales them.",
+    "Comparison view: ◧ on the Timeline Monitor shows a reference frame beside the live picture, or split across it. Drag the line, swap the sides, and move the reference by cut, by the scrub bar, or to this frame. The reference starts without the grade open in the Colour panel. Apply to reference holds that grade on it while the live picture takes your next changes, and ↺ takes it off.",
+    "Apply match sets the colour wheels and saturation so the block matches the reference frame. Face detection, ticked by default, finds the faces in both frames and counts them more in the match. The first match with it downloads the face model (~230 KB, in the Models card).",
+    "The Colour panel’s ≡ menu: copy grade and paste grade, save preset… and apply preset, and export .cube…, which writes the grade into the LUT folder. Sharpen, hsl secondary and vignette stay out of the .cube: a LUT cannot hold them.",
+    "Slider values type: click the number, type, Enter. In the Effects panel too.",
+    "A storyboard still in an export is the right way up and carries its block’s effects."
+   ]
+  },
+  {
    "v": "0.35.0",
    "date": "2026-10-27",
    "lines": [

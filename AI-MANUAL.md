@@ -8,7 +8,27 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.36.0 (2026-11-01).*
+*Covers Video Dancer v0.36.1 (2026-11-04).*
+
+## New in 0.36.1
+
+- Deletes go to the Recycle Bin: Cleanup, a mood, a LoRA on the shelf, a reverted guide. A delete of paid or hand work asks first: a clip, a selection, a score or a voice with takes, a subtitle with lines, a workspace nothing brings back.
+- One gesture, one undo step: Q / W, the end trim, ripple delete, gap close, Ctrl+K and the speed ripple move the pictures, the free audio, the scores and the SUB blocks together, honouring the locks. What a job brought in is never an undo step: it survives Ctrl+Z.
+- The razor stays armed until V or Esc. Ctrl+K cuts every unlocked block under the playhead in one go. A subtitle line saves when you leave the field or press Enter.
+- Esc closes the top layer only: a dialog, a dropdown, a menu, a popover, the Room. Every dropdown is the house dropdown now, and a greyed control shows its reason when you point at it.
+- Nothing fails silently: an action that stops shows a toast naming the action and the reason, and its busy mark clears. Recovery, project and compose messages reach you as toasts too.
+- What the Monitor plays is what renders: fades, a reversed block’s sound and music levels land at the same second in a range export as in the full one. The export honours the SUB track’s eye and draws subtitles at the Monitor’s size.
+- Listen and Make: ✕ cancels the job, progress shows in the panel, your typed text wins over the translation, and a project switch mid-job saves nothing into the other project.
+- Every form saves when the window closes or the app quits; a quit while local work runs asks first. A load never saves. A render from a form you have not committed makes its clip first, so two renders are two clips.
+- The last session’s queued rows come back as a Queue row per project, with re-queue and forget, and wait for your word.
+- Accepted means persisted: a job a supplier took is on disk before anything else, so a crash never loses it or pays for it twice. Recovery lands a download already on disk without fetching it again.
+- Results land in the project that asked: a render, a card, an enhance or a Co-Director write that finishes after you switched projects goes to its own project, on its next open. A render with no project open refuses. New Project says why when it cannot create. A project whose folder moved gets a pick-the-folder-again door.
+- Saves land in place, never half-written, and a file that cannot be read is never written over as empty. Deleting a card version keeps its files and scrubs every clip’s references.
+- Local engines: the Dancer apps share one GPU turn, and a caller waits instead of seeing busy in another Dancer app. ⏻ free GPU stops the idle workers and names the busy one.
+- Updates: a quit never installs; the chip asks before the restart. Electron 44.9.3. The 80s dark fantasy mood no longer ships.
+- Colour: apply match stops with a word if the block, the project or the reference moved under it, and a reference that could not be drawn says why. The Timeline Monitor’s right buttons fold at narrow widths.
+- LoRAs: one chip in Clip Gen and Image Gen; a same-name drop lands beside as name (2), or says the file is already on the shelf.
+- The README and the manual say what the app does today: the keys, Seedance 2.5, the Queue row at quit, the Claude Code login under Settings → Connections.
 
 ## New in 0.36.0
 
@@ -237,7 +257,7 @@ Co-Director exchange continuing after real renders remains unverified.
 - Eleven v4 and v4 Turbo voices: pick one of yours, design one, or clone a sample.
 - Lyria 3.5 in Score, with up to 10 pictures to set the mood.
 - ElevenLabs Music v2.5 in Score.
-- SFX Gen (Window menu): sound effects from the footage under them (Sonilo) or from words (ElevenLabs).
+- SFX Gen (Window menu): sound effects from the footage under them (Sonilo) or from words (ElevenLabs), placed on a score track.
 - Lip-sync in the Video Editor with sync-3 or VEED Lipsync v2. Right-click a block to lip-sync it to the sound under it.
 - Music refs in Score: drop a track in and ACE-Step or ElevenLabs Music follows it, from only its style to its tune.
 - Voice extras: a char sheet’s voice comes with it as an @audio slot, each slot is timbre or dialogue, and a clip’s dialogue lines render to a Library track.
@@ -272,7 +292,7 @@ reference A or B; it is kept in the Library and assigned to that slot. Library i
 work. The monitor also retains its picture while scrubbing instead of flashing black.
 
 **Watch and timeline review.** Settings → Watch has **Watch model**, defaulting
-to `gemini-3.6-flash`. In the Timeline toolbar, **Watch cut** opens a review of the entire timeline
+to `gemini-3.8-flash`. In the Timeline toolbar, **Watch cut** opens a review of the entire timeline
 or its marked in/out range. Enter a question and click **Watch cut** in the dialog. Progress and
 the answer appear there; **Cancel** or closing the dialog stops the request. The Co-Director can
 also respond to “watch the timeline and describe the ending” using its `watch_timeline` tool.
@@ -318,32 +338,39 @@ The core mental model, in one line: **the storyboard is the movie; renders are v
 
 ### Install
 - Download Video Dancer free from shdw.work (https://www.shdw.work) or the GitHub releases page.
-- **Windows**: run `Video Dancer Setup <version>.exe`. SmartScreen will warn ("Windows protected
-  your PC") because the beta is unsigned. Click **More info → Run anyway** (one time). The app
-  then auto-updates silently (checks on launch and every ~3 hours, applies on restart). A quiet
-  header chip appears only if an update actually fails.
-- **macOS**: open the `.dmg`; the app is unsigned, so **right-click the app → Open → Open** the
-  first time. No auto-update on Mac yet. Get new versions from shdw.work.
+- **Windows**: run `VideoDancer-Windows-Setup.exe` (the releases page also keeps a copy named by
+  version, `Video-Dancer-Setup-<version>.exe`). SmartScreen will warn ("Windows protected your
+  PC") because the beta is unsigned. Click **More info → Run anyway** (one time). The app then
+  looks for updates on launch and every 3 hours, downloads one in the background, and installs
+  it when you press **restart** on the header chip; a quit never installs. A quiet header chip
+  appears only if an update actually fails.
+- **macOS**: open the `.dmg`; the app is unsigned, so the first open is blocked. On macOS 15 and
+  later: try to open it once, then **System Settings → Privacy & Security → Open Anyway**. On
+  older versions: **right-click the app → Open → Open**. No auto-update on Mac yet. Get new
+  versions from shdw.work.
 
 ### Suppliers (required for cloud engines)
 Cloud rendering runs on the user's OWN account at an AI supplier; they pay the supplier
 directly. There is no shared or bundled key. Local LTX 2.5 renders need NO supplier and no
 key: they run free on the machine's own NVIDIA GPU (see Models below). The first launch walks
 through the options with paste-and-test boxes. **⚙ Settings → Connections** shows each
-supplier as its own card with a connected chip, a free **test key** button (never spends
-credits), and a **get a key ↗** link. Saved keys display as last-4 only. Keys are stored only
-on the machine, encrypted with the OS keychain. A banner reminds the user until at least one
-supplier is connected; any one supplier unlocks cloud rendering.
+supplier as its own card: paste a key and press **Check and save** (a free check, it never
+spends credits; a supplier with no check has **Save key**), later **Check**, **Replace** or
+**Remove** it, with a **Get a key ↗** link to the supplier's page. A saved key is never shown
+again, only its status (checked, or "Saved · not checked"). Keys are stored only on the
+machine, in its data folder, encrypted with the OS keychain where one is available and as
+plain text where it is not. A banner reminds the user until at least one supplier is
+connected; any one supplier unlocks cloud rendering.
 
 - **fal.ai (recommended).** One key powers everything: Seedance 2 (with video and audio
-  references), Seedance 2.5 (early access), Omni video edits, and image generation.
+  references), Seedance 2.5, Omni video edits, and image generation.
   Pay-per-use in dollars. Key at fal.ai → **Settings → Keys** (format `id:secret`). An optional
   fal **admin** (billing-scope) key shows the live $ balance in the header.
-- **BytePlus ModelArk.** Seedance 2 direct from ByteDance: image and audio refs, first/last
+- **BytePlus ModelArk.** Seedance 2 and 2.5 direct from ByteDance: image and audio refs, first/last
   frame, 10-bit 4K. Video references are not wired yet (their API wants public URLs; the slots
   say so). Their policy: reference images must not contain real human faces. Token billing via
-  console.byteplus.com, so no dollar estimate shows on ModelArk renders. A connected ModelArk
-  gets an `ARK ↗` console chip in the header.
+  console.byteplus.com; the dollar estimate shown is worked out from the token rate and assumes
+  16:9. A connected ModelArk gets an `ARK ↗` console chip in the header.
 - **Astria.** Seedance 2 on Astria plan credits: text-to-video and first/last-frame i2v. No
   reference images over their API.
 - **Higgsfield (key).** Their developer API still doesn't serve Seedance; use the Bridge login
@@ -366,9 +393,11 @@ Two ways to power it:
 - **API (default)**: paste an Anthropic API key in **⚙ Settings → Connections**.
 - **Claude Code bridge (experimental)**, which uses a Claude subscription instead of an API key:
   1. Install Node.js (if not present), then `npm install -g @anthropic-ai/claude-code`.
-  2. Run `claude` once in a terminal and log in with the Claude account.
-  3. In Video Dancer: **⚙ Settings → Co-Director → Active connection → the bridge** (the choice
-     stays disabled until the CLI is detected).
+  2. In Video Dancer: **⚙ Settings → Connections → Claude Code → Log in with Claude**. The app
+     keeps its own login (under `llm-accounts/` in its data folder); a terminal login is neither
+     needed nor read. Codex and Gemini CLI connect the same way.
+  3. **⚙ Settings → Co-Director → Active connection → the bridge** (the choice stays disabled
+     until Claude Code is detected).
   The Co-Director panel shows an amber "bridge" badge when active.
 ## 3. Bridge (log in instead of keys)
 The **Bridge panel** (Window ▾ → Bridge) connects supplier ACCOUNTS: press **login** on a row
@@ -376,8 +405,8 @@ and that supplier's own sign-in page opens in the browser; the app stays signed 
 and renders spend that account's subscription credits. No API keys anywhere on this panel.
 
 - **Suppliers**: Higgsfield and Runway (both proven live), Magnific and Pika (they require
-  their paid tiers; the rows say so plainly), Artlist and ElevenLabs (they don't allow outside
-  apps yet; those rows sit greyed with the reason).
+  their paid tiers; the rows say so plainly), Artlist and ElevenLabs (their login goes through
+  the app's own public page; not proven live yet).
 - **The pool**: the top of the panel shows each account's credits in the supplier's own words,
   one stacked bar of who holds what share, and estimated render minutes at 480/720/1080
   (marked est; estimates sharpen as real renders teach real rates).
@@ -574,17 +603,20 @@ Three levels:
    clips' characters to it ("from clip" picker). Change the sheet, every linked clip follows.
 
 ### Styles
-**Project Styles** panel: project-wide blocks (master look, production notes, lighting, etc.)
+**Style Sheet** panel: project-wide blocks (master look, production notes, lighting, etc.)
 pinned into every prompt.
 
 ## 6. Models
 - **Seedance 2 (fal)**: ref2v (up to 9 image refs plus @video/@audio slots) and i2v (start +
   optional end frame). Structured YAML prompts. Seed supported.
-- **Seedance 2.5 (fal, early access)**: the same reference suite plus 4K output and every
-  integer duration 4–15s. No seed input. fal gates it behind early access: request it on fal's
-  model page; renders 403 until approved, and prices are provisional.
+- **Seedance 2.5 (fal)**: up to 30 reference images, 10 videos and 10 audios (50 files in all),
+  every integer duration 4–30 s or auto, 480p / 720p / 1080p. No seed input. Token-billed: the
+  $/s estimate assumes 16:9. A **draft** switch renders a cheap 480p draft first; **finish at
+  1080p** on a draft take renders the same video full size as a new take.
 - **Seedance 2 (ModelArk)**: image + audio refs, first/last frame, 10-bit 4K. No video refs yet,
   and no real human faces in reference images (their policy).
+- **Seedance 2.5 (ModelArk)**: the same lane for 2.5: native 30 s, 480p to 1080p, token-billed
+  with the same 16:9 estimate.
 - **Seedance 2 (Astria)**: text-to-video and first/last-frame i2v on plan credits. No refs.
 - **Seedance 2 / 2.5 (Higgsfield Bridge)**: the full reference trio through a Higgsfield
   LOGIN (Bridge panel, §3), billing that account's plan credits. Proven live, refs included.
@@ -633,7 +665,7 @@ pinned into every prompt.
   MSR (up to 4 subjects + background).
 - **LoRAs (LTX only)**: the Models card's loras section is a live shelf: a Civitai browser
   (search, sort, ★ favorites), the official Lightricks adapters scanned live from their
-  Hugging Face, and any .safetensors dropped into userData/models/loras/. Installs pass the
+  Hugging Face, and any .safetensors dropped into `loras/` under the models folder (the Models card's **change** button says where that is; the default is `models/` in the app's data folder). Installs pass the
   same size + hash + weight checks as model files; a JSON sidecar carries name, trigger
   words, base model and thumb. Civitai downloads need the user's Civitai key (Settings);
   browsing does not. In Clip Gen a "＋ lora" button under the prompt (LTX renders only,
@@ -767,8 +799,9 @@ filmstrip frames filling the blocks edge to edge.
 - **Markers & range**: **M** drops a marker at the playhead (right-click the flag to name /
   recolor / delete). **I / O** set the in/out range: playback loops it, export renders only it.
 - **Navigation**: wheel pans; **Ctrl+wheel zooms at the cursor**; `-` `=` `\` = zoom out / in /
-  fit; **J/K/L** = play backward / stop / play (J or L again = faster, up to 8×); ←/→ jump between cuts (with a block selected: nudge
-  by a frame, Shift = 1 second; **, / .** nudge too); Home/End = start / end.
+  fit; **J/K/L** = play backward / stop / play (J or L again = faster, up to 8×); ←/→ step the playhead a frame (Shift = 5);
+  ↑/↓ jump between cuts; **, / .** nudge the selected block a frame (Shift = 5); **Q / W**
+  ripple-trim the clip under the playhead to it; Home/End = start / end.
 - **Playback**: double-buffered engine, seamless cuts; dissolves preview as true crossfades;
   speed plays at speed. ⛶ = safe-area guides; 🖥 = fullscreen mirror on a second display (Esc
   there closes).
@@ -884,9 +917,11 @@ tinted until accepted as keep-or-revert cards. Every write is undoable.
 - **The Screen**: say "show the latest take" and it floats up big beside the chat, playing with
   sound. Click any playing pop to put that exact take on the Screen; the Co-Director can put
   takes up or clear them itself. ▾ folds it to a corner; ✕ clears it.
-- **Model dial**: the ⚭ chip in the Room flips Sonnet 5 and Opus 5.5 with one click (Sonnet for
-  routine passes, Opus for the heavy creative ones). Settings lists every bridge model: Fable 5,
-  Opus 5.5, Opus 5, Sonnet 5, Haiku 4.5. **A− / A+** sizes the type in both chats.
+- **Model dial**: the ⚭ chip in the Room flips between the newest Sonnet and the newest Opus
+  (Sonnet 5.5 ⇄ Opus 5.5) with one click (Sonnet for routine passes, Opus for the heavy creative
+  ones). Settings lists every bridge model: Fable 5.1 (the bridge default), Opus 5.5, Sonnet 5.5,
+  Fable 5, Opus 5, Sonnet 5, Haiku 4.5; the API lane lists the same seven with Sonnet 5.5
+  recommended. **A− / A+** sizes the type in both chats.
 - **Claude Code too old**: a model newer than the installed Claude Code gets a plain line in the
   chat with **update claude code**; it runs the update and sends the message again. Settings
   shows the same line, and whether Claude Code is logged in.
@@ -898,15 +933,19 @@ tinted until accepted as keep-or-revert cards. Every write is undoable.
 - **The usage line**: under send, after every exchange: rounds, tokens read per round, tokens
   written. Hover for the split (fresh against cached) and what the prompt was made of: guides,
   project state, history, message, images. The exact prompt of the last exchange is written to
-  `codir-last-prompt.txt` in the app data folder, so you can read what it read.
+  `codir-last-prompt.txt` in the app data folder (`%APPDATA%\vi-dancer` on Windows,
+  `~/Library/Application Support/vi-dancer` on a Mac; `VIDEO_DANCER_DATA_DIR` moves it), so you
+  can read what it read.
 - **Its guides**: eight markdown files with load toggles (Settings → Co-Director): who it is and
   how it works, operations (the procedure and reply shapes), library (prompting knowledge per
   engine), gaffer (camera, action and effects), previs, ideas (the idea engine for loose ideas),
   fail (the misreads it checks before you pay) and learning. Fork them, tune them, feed it your
   own rules. It saves a new rule only when told to save; those rules live in their own file
   (`guides/learned.md`), never a fork of the instructions, so every app update reaches them.
-- **It learns from corrections**: every correction goes in a dated log; ask for a review and it
-  proposes which ones become standing rules.
+- **It learns from corrections**: a correction is logged to `codi/corrections.jsonl` in the app
+  data folder, with a running summary in `codi/learning.json`; ask for a review and it proposes
+  which ones become standing rules, saved into `guides/learned.md`. The project brief it reads
+  each exchange carries your corrections word for word as well, so every lane sees them.
 - **Cold read**: with **cold read on** beside the renders switch, it reads the compiled prompt
   fresh before a render and flags what the model could get wrong.
 - **Readable replies**: bold, lists, tables, headings and code boxes with a copy button, in the
@@ -994,8 +1033,8 @@ a running job is already billing, so cancelling is best-effort.
   whether or not anyone is watching.
 - **Crash safety**: a render already sent to the supplier is rescued on the next launch if the
   app dies; the paid result still lands as its take. Jobs still waiting when the app quits
-  don't keep running, but pending renders persist per project, and reopening offers a one-click
-  re-queue. Jobs are stamped to their project; switching projects parks them instead of
+  don't keep running, but they persist per project, and reopening shows them as a row at the top
+  of the Queue: **re-queue** puts them back in their order, **forget** drops them. Jobs are stamped to their project; switching projects parks them instead of
   rendering into the wrong one. There's also a manual "add take from file…" for anything pulled
   down by hand.
 - **SAVES FAILING banner**: a failing disk save is impossible to miss and clears when a save
@@ -1003,9 +1042,9 @@ a running job is already billing, so cancelling is best-effort.
 - **Chinese for Seedance**: a Seedance render sends its prompt in Chinese, translated through the
   Co-Director's route; the English stays the recipe and the take keeps what was sent. Clip Gen's
   generated box has **EN | 中** tabs to see what goes out, and **中 chinese on/off** to send English.
-- **Costs**: fal engines show a live dollar estimate before rendering; ModelArk bills tokens,
-  so no dollar estimate shows there. Video edits run roughly $0.14/sec all-in. The SPND chip
-  tracks per-project spend.
+- **Costs**: every engine shows a dollar estimate before rendering; ModelArk and Seedance 2.5
+  bill tokens, so theirs is worked out from the token rate and assumes 16:9. Omni video edits
+  bill $0.10 per output second. The SPND chip tracks per-project spend.
 
 ## 12. Image Editor and Image Gen
 
@@ -1090,7 +1129,7 @@ editor, reveal, delete; each remembers exactly what ran. If the engine crashes m
 wait stops within seconds with the reason and the engine restarts clean. References over
 4 megapixels are sent as a smaller working copy (the Library file is untouched; the model
 resizes references to the render size anyway). "Windows ran out of memory loading the model"
-means exactly that: close other apps or pick a smaller model, then **clear GPU** in the Models
+means exactly that: close other apps or pick a smaller model, then **⏻ free GPU** in the Models
 card and try again.
 - **Take as reference**: drag a take into reference A or B, including a take from another
   Image Gen card. It joins the Library and fills that slot; the prompt and other settings stay.
@@ -1134,7 +1173,7 @@ clips.)
     differ: cut off, loop, bounce, silence or remap.
   - **re-gen** (Seedance): the source rides as `@video1` with the full reference suite around
     it: image refs, extra videos, audio windows, plus output duration / resolution / aspect
-    (4K on Seedance 2.5). Runs on fal or on your Higgsfield Bridge login (Seedance 2 / 2.5).
+    (up to 1080p on Seedance 2.5). Runs on fal or on your Higgsfield Bridge login (Seedance 2 / 2.5).
 - **The bar** under the picture shows the video's frames with play, mute and timecode on one
   row; the window's brackets stay dim until it is trimmed.
 - **Every generation is a take card** in the **takes** sidebar (the Image Editor's grammar).
@@ -1206,7 +1245,7 @@ remain separate.
 
 **Subtitles**: when the SUB track has blocks, the export row **subtitles** picks **burn in** (drawn into the picture as the Monitor shows them), **.srt** (one file per language beside the video, named after it: `film.srt`, `film.ja.srt`) or **off**. Both follow the export range.
 
-One clip instead of a sequence: right-click it in the Bin → **export video…**, or alt-drag the
+One clip instead of a sequence: right-click it in the Bin → **export keeper as…**, or alt-drag the
 tile onto the desktop or any folder (the file copies out; the original stays in the project).
 
 ## 16. Make it yours
@@ -1220,10 +1259,11 @@ tile onto the desktop or any folder (the file copies out; the original stays in 
 
 ## 17. Shortcuts (global)
 
-Space = play/pause (fronted monitor owns it) · ←/→ = prev/next cut, or nudge the selected block
-(Shift = 1s) · , / . = nudge · Home/End · J/K/L = play backward / stop / play (again = faster) · C = slice tool ·
+Space = play/pause (fronted monitor owns it) · ←/→ = step the playhead a frame (Shift = 5) ·
+↑/↓ = prev/next cut · , / . = nudge the selected block a frame (Shift = 5) · Home/End · J/K/L =
+play backward / stop / play (again = faster) · C = slice tool ·
 Ctrl+K = razor · Q / W = ripple start/end to playhead · S = snap toggle · A = select forward
-(V/Esc cancels) · M = marker · I/O = in/out range (and the take monitor's window in Clip Gen) ·
+(V/Esc cancels) · V = selection tool · P = pen (audio keyframes) · Ctrl+R = Clip Speed / Duration · M = marker · I/O = in/out range (and the take monitor's window in Clip Gen) ·
 − = zoom out · = zoom in · \ = fit · Ctrl+C/X = copy / cut · Ctrl+V = paste (overwrite) ·
 Ctrl+Shift+V = paste (insert) · Del = remove block/group/gap (a linked clip goes whole; Alt+Del =
 one half) · Esc = clear/disarm/restore · Ctrl+Z / Ctrl+Shift+Z (or Ctrl+Y) = undo/redo ·
@@ -1238,12 +1278,10 @@ Ctrl on a flush edge = rolling trim. All suppressed while typing in a field.
 - **"connect a supplier" banner**: no supplier key saved yet (⚙ Settings → Connections).
 - **A render errored**: usually the supplier account is out of credit, or the model rejected an
   input. The Queue shows the supplier's real error detail, including field names.
-- **Seedance 2.5 renders fail with 403**: fal hasn't granted early access yet; request it on
-  their model page.
 - **ModelArk rejects a render**: check the no-real-human-faces reference policy and that video
   ref slots are empty (not supported there yet).
 - **The app died during a render**: relaunch; completed renders are rescued automatically, and
-  pending ones offer a one-click re-queue.
+  waiting ones come back as a Queue row with re-queue / forget.
 - **A clip plays the wrong take**: check the slot's take picker (take N/M ▾ on the block). A
   slot choice overrides the keeper; S-B means it's playing the live storyboard. A dotted amber
   ring + ★ means the block is dynamic and follows the keeper.
@@ -1252,14 +1290,16 @@ Ctrl on a flush edge = rolling trim. All suppressed while typing in a field.
   save.
 - **Frames look wrong after slicing**: thumbnails sample only the block's own window; toggle
   the filmstrip off/on.
-- **Co-Director bridge greyed out**: the `claude` CLI isn't detected. Install and log in (§2),
-  then reopen Settings.
-- **Logs**: click the "Video Dancer" logo → About → open the log folder → send `main.log`.
+- **Co-Director bridge greyed out**: Claude Code isn't detected. Install it and log in from
+  Settings → Connections (§2), then reopen Settings.
+- **Logs**: click the "Video Dancer" logo → About → open the log folder. `main.log` holds the
+  session's errors, every supplier exchange in full and your project names and paths: read it
+  before you send it.
 
 ## 19. Known limitations (current beta)
 
-Unsigned installers; macOS has no auto-update. Seedance 2.5 needs fal early access and its
-prices are provisional. ModelArk video refs aren't wired; Higgsfield has no Seedance engine
-yet. Video edits (EDIT mode) come back fixed at 720p / 16:9 / 24fps and window sources
+Unsigned installers; macOS has no auto-update. Seedance 2.5 is token-billed, so its price is
+an estimate that assumes 16:9. ModelArk video refs aren't wired; Higgsfield's developer API has
+no Seedance engine yet (the Bridge login does). Video edits (EDIT mode) come back fixed at 720p / 16:9 / 24fps and window sources
 longer than 10s. Waiting queue jobs don't auto-resume after a quit (they persist and offer a
 re-queue; a render already sent to the supplier is rescued).
