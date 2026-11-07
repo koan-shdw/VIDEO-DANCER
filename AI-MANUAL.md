@@ -12,8 +12,7 @@
 
 ## New in 0.37.0
 
-- Ten VHS effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching and colour degrade. Tape noise, dropouts, head switching and tracking roll are drawn tape line by tape line, the way a worn tape breaks up.
-- Five more effects: ink outlines, motion echo, depth fog, depth slit-scan and datamosh.
+- New effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching, colour degrade, ink outlines, motion echo, depth fog, depth slit-scan and datamosh.
 - Lens blur takes the place of focus: a focus range by depth, a shape, cat eye and boost. A block with focus opens with lens blur, its focus kept.
 - A look slider on scan lines, chroma shift, lens blur, depth fog, datamosh and depth slit-scan: it runs from the first look to the newest and blends the looks between. It starts on the newest.
 - A mask on every effect: the mask row under each one picks where it works, subject (AI) or depth (AI), with its own settings. Off is the whole picture.
@@ -803,9 +802,9 @@ filmstrip frames filling the blocks edge to edge.
   slide a clip and the picture beyond the crop reveals itself to work against, Premiere-style),
   **flipping** (horizontal and vertical on / off, pinned under transform),
   **grid** (FIT shows the whole clip per box; the loop button locks drift to whole cells),
-  **lens blur**, **air**, **push**, **colour** rows, the ten VHS effects (**scan lines**,
-  **tracking roll**, **vhs glow**, **chroma bleed**, **chroma shift**, **tape noise**, **dropouts**,
-  **jitter**, **head switching**, **colour degrade**), **ink outlines**, **motion echo**,
+  **lens blur**, **air**, **push**, **colour** rows, **scan lines**, **tracking roll**,
+  **vhs glow**, **chroma bleed**, **chroma shift**, **tape noise**, **dropouts**, **jitter**,
+  **head switching**, **colour degrade**, **ink outlines**, **motion echo**,
   **depth fog**, **depth slit-scan**, **datamosh**, and **subject / depth masks**, each with blend
   modes. Every effect has its own **mask** row (off, subject (AI), depth (AI)) with its own
   settings; off is the whole picture. Scan lines, chroma shift, lens blur, depth fog, datamosh
