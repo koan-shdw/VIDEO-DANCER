@@ -8,9 +8,9 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.37.0 (2026-11-07).*
+*Covers Video Dancer v0.37.1 (2026-11-07).*
 
-## New in 0.37.0
+## New in 0.37.1
 
 - New effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching, colour degrade, ink outlines, motion echo, depth fog, depth slit-scan and datamosh.
 - Lens blur takes the place of focus: a focus range by depth, a shape, cat eye and boost. A block with focus opens with lens blur, its focus kept.

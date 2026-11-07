@@ -695,7 +695,7 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 
 ---
 
-## New in 0.37.0
+## New in 0.37.1
 
 - New effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching, colour degrade, ink outlines, motion echo, depth fog, depth slit-scan and datamosh.
 - Lens blur takes the place of focus: a focus range by depth, a shape, cat eye and boost. A block with focus opens with lens blur, its focus kept.

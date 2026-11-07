@@ -2,7 +2,7 @@
  "app": "Video Dancer",
  "versions": [
   {
-   "v": "0.37.0",
+   "v": "0.37.1",
    "date": "2026-11-07",
    "lines": [
     "New effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching, colour degrade, ink outlines, motion echo, depth fog, depth slit-scan and datamosh.",
