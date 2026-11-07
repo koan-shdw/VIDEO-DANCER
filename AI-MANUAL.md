@@ -8,7 +8,19 @@
 > expand only when the user asks. The user may be mid-task inside the app. Prefer "click X,
 > then Y" over theory.
 
-*Covers Video Dancer v0.36.3 (2026-11-04).*
+*Covers Video Dancer v0.37.0 (2026-11-07).*
+
+## New in 0.37.0
+
+- Ten VHS effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching and colour degrade. Tape noise, dropouts, head switching and tracking roll are drawn tape line by tape line, the way a worn tape breaks up.
+- Five more effects: ink outlines, motion echo, depth fog, depth slit-scan and datamosh.
+- Lens blur takes the place of focus: a focus range by depth, a shape, cat eye and boost. A block with focus opens with lens blur, its focus kept.
+- A look slider on scan lines, chroma shift, lens blur, depth fog, datamosh and depth slit-scan: it runs from the first look to the newest and blends the looks between. It starts on the newest.
+- A mask on every effect: the mask row under each one picks where it works, subject (AI) or depth (AI), with its own settings. Off is the whole picture.
+- The depth range: one box wherever you pick depth, on the depth masks, lens blur, depth fog and depth slit-scan. It shows the depth at the playhead, far to near. Drag the ends and the soft edges, or slide the range. Subject sets it from the depth under the subject, pick from a click in the Monitor, and the heat map shows it on the Monitor only.
+- Effect stacks: the dropdown at the top of the Effects panel. Save this effect stack… keeps a block’s effects under a name, each with its settings and its own mask. Pick one to replace a block’s effects, or add it after them. Rename…, delete… (to the Recycle Bin) and open the effect stacks folder.
+- Motion echo, datamosh and depth slit-scan use the frames before: the Timeline Monitor shows them as the export renders them, after a seek too. No blink while a mask’s data catches up.
+- Codi no longer runs shell commands.
 
 ## New in 0.36.3
 
@@ -791,7 +803,24 @@ filmstrip frames filling the blocks edge to edge.
   slide a clip and the picture beyond the crop reveals itself to work against, Premiere-style),
   **flipping** (horizontal and vertical on / off, pinned under transform),
   **grid** (FIT shows the whole clip per box; the loop button locks drift to whole cells),
-  **focus**, **air**, **push**, and **subject / depth masks**, each with blend modes. Everything
+  **lens blur**, **air**, **push**, **colour** rows, the ten VHS effects (**scan lines**,
+  **tracking roll**, **vhs glow**, **chroma bleed**, **chroma shift**, **tape noise**, **dropouts**,
+  **jitter**, **head switching**, **colour degrade**), **ink outlines**, **motion echo**,
+  **depth fog**, **depth slit-scan**, **datamosh**, and **subject / depth masks**, each with blend
+  modes. Every effect has its own **mask** row (off, subject (AI), depth (AI)) with its own
+  settings; off is the whole picture. Scan lines, chroma shift, lens blur, depth fog, datamosh
+  and depth slit-scan have a **look** slider: whole numbers are the looks, from the first to the
+  newest (the default), and values between blend the two. The **depth range** box (on the depth
+  masks, lens blur, depth fog and depth slit-scan) shows the depth at the playhead, far left to
+  near right: drag an end, a soft edge at the foot, or the middle to slide the range; **subject**
+  sets it from the depth under the subject, **pick** from a click in the Monitor, and the
+  **heat map** eye shows the kept range on the Monitor only (one per block; the export renders the
+  picture). **Effect stacks**, the dropdown at the top of the panel: a pick replaces the block's
+  effects, **add after this block's effects** puts one after them, **save this effect stack…**
+  saves the effects list under a name (each effect with its settings and its own mask; transform,
+  flipping, the block mask and blend stay out), then **rename…**, **delete…** (to the Recycle
+  Bin) and **open the effect stacks folder**. Motion echo, datamosh and depth slit-scan read the
+  frames before; the Monitor shows them as the export renders them, after a seek too. Everything
   composites live in the Timeline Monitor. The AI passes (subject matte, depth) run locally and
   cache next to the take, downloading their model once with a small corner progress monitor.
   Export bakes the exact same chain at full resolution, so preview and file match by
@@ -975,13 +1004,6 @@ tinted until accepted as keep-or-revert cards. Every write is undoable.
 - **It watches video** (with a Google AI key, §2): "how's the latest render of KATA?" makes it
   watch the take and answer from what it saw, quoting motion, cuts and sound. Without the key
   it reads still frames and says so.
-- **Its shell**: it runs PowerShell (pwsh when installed, else Windows PowerShell; on a Mac, sh, shown as `sh>` in the tool log) in the open
-  project's folder, for work no other tool covers: looking at files and folders, checking what
-  is installed, ffmpeg and ffprobe, downloading media the user gives it a link to. Each command
-  has a time limit: 2 minutes unless it asks for more, 10 at most; a command that runs out is
-  stopped and hands back what it printed. Every command shows in its tool log; click the row to
-  see what came back. **Stop** ends it. Its guide tells it never to delete, never to read keys,
-  logins or the app's settings, and to ask before installing anything.
 
 ### Continuing a plan after jobs finish
 

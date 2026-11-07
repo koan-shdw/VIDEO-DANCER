@@ -131,6 +131,7 @@ A real multi-track NLE now: free positioning with gaps, stacked video tracks, al
 - **Trim**: drag either edge (source-accurate, speed-aware). An **end trim ripples**: everything after it follows the edge so the sequence stays flush (Alt = leave the gap). **Ctrl on a flush edge = rolling trim**: the join slides, both neighbors adjust.
 - **Slice**: **C** arms the razor (click any clip, audio or score block to cut), **Ctrl+K** cuts at the playhead instantly, the selected block first.
 - **Per-block extras** (right-click): frame stills to the Library, **cross-dissolve…**, **speed 0.25–4×** (Ctrl+R opens Clip Speed / Duration on the selection), unlink audio, edit with AI, remove or **ripple delete**.
+- **Effects**: right-click a block → **✦ effects…**, or Window → Effects. Each block carries an ordered stack: transform, flipping, grid, lens blur, air, push, colour, the ten VHS effects (scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching, colour degrade), ink outlines, motion echo, depth fog, depth slit-scan and datamosh. Every effect has its own **mask** row: off, subject (AI) or depth (AI). Six have a **look** slider that runs from the first look to the newest. The **depth range** box sets every depth choice over the depth at the playhead: drag the ends and soft edges, set it from the subject or a click in the Monitor, and check it with the heat map. The **effect stacks** dropdown at the top saves a block's effects under a name and puts them on another block. The Timeline Monitor and the export draw the same chain.
 - **Dissolves you can drag**: drag the small marker at a cut to create a centered cross-dissolve. Its labeled block has two draggable edges and a cut line. Double-click for exact duration and Center, Start or End at cut. Stripes mean unused source footage has run out and edge frames repeat. Both shots otherwise keep moving, with effects intact. Delete removes the focused transition; Escape cancels a drag. The toolbar and right-click dialog also apply dissolves to selected clips. Clip positions stay fixed; audio fades are separate.
 - **Markers and range**: **M** drops a marker at the playhead (right-click to name, recolor, remove). **I / O** set an in/out range: playback loops it, export renders just that window.
 - **Navigation**: wheel pans, **Ctrl+wheel zooms at the cursor**, `-` / `=` / `\` zoom out / in / fit, **J/K/L** shuttle (J plays backward, each press faster, up to 8×), ←/→ step the playhead a frame (Shift = 5), ↑/↓ jump to the previous / next cut, `,` / `.` nudge the selected block a frame (Shift = 5), Q / W ripple-trim the clip under the playhead to it, autoscroll follows playback.
@@ -390,7 +391,6 @@ requests cancellation of running jobs and keeps completed files.
 - **Lora examples and ~ tags**: it reads a lora's Civitai examples with their prompts and pictures ("remake the samurai ones"). Press **~** on pictures in Watched or a lora's examples and it sees every tagged one, with its prompt, in each message.
 - **It watches video**: with a Google AI key, "how's the latest render of KATA?" makes it watch the take with Gemini Flash and answer from what it saw. Without the key it reads still frames and says so.
 - **Subtitles**: it reads a subtitle (its languages, where its blocks sit, every line with its times) and writes the text of the lines you name in either language, times kept. One Ctrl+Z undoes it.
-- **Its shell**: it runs PowerShell (sh on a Mac) in your project folder for work no other tool covers (looking at files, ffmpeg and ffprobe, downloading media you give it a link to), with a time limit: 2 minutes unless it asks for more, 10 at most. Every command shows in its tool log; click it to see what came back. **Stop** ends it. Its guide tells it never to delete, never to read your keys or logins, and to ask before installing anything.
 - **Watch cut**: review the whole timeline or its marked in/out range from the Timeline toolbar, or ask the Co-Director to watch the assembled story. The temporary video includes trims, effects, transitions and mixed audio. Watch defaults to Gemini 3.8 Flash, configurable in Settings → Watch. Google failures can fall back to Claude still frames, clearly labelled **no motion or sound**. This reviews the prepared edit, not live playback glitches.
 - **SPND**: the header chip tracks what this project has spent, with a per-render cost breakdown on click. **GEM** beside it shows what the watching has cost.
 
@@ -694,6 +694,18 @@ Turn the timeline into a finished MP4. Full re-encode, music mix, and storyboard
 - **Timeline settings**: rename the timeline and set its aspect (16:9, 9:16, 1:1, 4:3, 3:4, or 21:9), with a clip count and total duration.
 
 ---
+
+## New in 0.37.0
+
+- Ten VHS effects: scan lines, tracking roll, vhs glow, chroma bleed, chroma shift, tape noise, dropouts, jitter, head switching and colour degrade. Tape noise, dropouts, head switching and tracking roll are drawn tape line by tape line, the way a worn tape breaks up.
+- Five more effects: ink outlines, motion echo, depth fog, depth slit-scan and datamosh.
+- Lens blur takes the place of focus: a focus range by depth, a shape, cat eye and boost. A block with focus opens with lens blur, its focus kept.
+- A look slider on scan lines, chroma shift, lens blur, depth fog, datamosh and depth slit-scan: it runs from the first look to the newest and blends the looks between. It starts on the newest.
+- A mask on every effect: the mask row under each one picks where it works, subject (AI) or depth (AI), with its own settings. Off is the whole picture.
+- The depth range: one box wherever you pick depth, on the depth masks, lens blur, depth fog and depth slit-scan. It shows the depth at the playhead, far to near. Drag the ends and the soft edges, or slide the range. Subject sets it from the depth under the subject, pick from a click in the Monitor, and the heat map shows it on the Monitor only.
+- Effect stacks: the dropdown at the top of the Effects panel. Save this effect stack… keeps a block’s effects under a name, each with its settings and its own mask. Pick one to replace a block’s effects, or add it after them. Rename…, delete… (to the Recycle Bin) and open the effect stacks folder.
+- Motion echo, datamosh and depth slit-scan use the frames before: the Timeline Monitor shows them as the export renders them, after a seek too. No blink while a mask’s data catches up.
+- Codi no longer runs shell commands.
 
 ## New in 0.36.3
 
